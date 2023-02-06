@@ -19,6 +19,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HttpClientModule } from '@angular/common/http';
 import { AllProductsComponent } from './Components/all-products/all-products.component';
 import { SalesProductsComponent } from './Components/sales-products/sales-products.component';
+import { SideOrderComponent } from './Components/side-order/side-order.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SalesProductsComponent } from './Components/sales-products/sales-produc
     AboutComponent,
     AllProductsComponent,
     SalesProductsComponent,
+    SideOrderComponent,
   ],
   imports: [
     BrowserModule,
