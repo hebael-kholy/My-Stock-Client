@@ -17,12 +17,13 @@
                <label for="">Email address</label>
             </div>
             <div class="inputboxes">
-                <input type="text">
-                <input type="email">
+                <input #userName type="text" [value]="username">
+                <input #email type="email" [value]="mail">
              </div>
            </div>
              <a  class="changePic" href="">Change Picture</a>
-             <input type="button" value="Save settings">
+             <input type="button" value="Save settings"(click)="Update(userName.value,email.value)">
+
         </form>
     </div> 
 </div>
