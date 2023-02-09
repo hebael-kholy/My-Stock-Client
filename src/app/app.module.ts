@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +18,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HttpClientModule } from '@angular/common/http';
 import { AllProductsComponent } from './Components/all-products/all-products.component';
 import { SalesProductsComponent } from './Components/sales-products/sales-products.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SalesProductsComponent } from './Components/sales-products/sales-produc
     AboutComponent,
     AllProductsComponent,
     SalesProductsComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { SalesProductsComponent } from './Components/sales-products/sales-produc
     CarouselModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent],

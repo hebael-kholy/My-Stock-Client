@@ -10,4 +10,8 @@ export class ProductsService {
   getAllProducts() {
     return this.myClient.get('https://fakestoreapi.com/products');
   }
+
+  getProductDetails(id:any){
+    return this.myClient.get(`https://fakestoreapi.com/products/${id}`)
+  }
 }
