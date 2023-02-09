@@ -1,4 +1,4 @@
-import { Component, OnInit ,EventEmitter} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { faCartShopping, faStar } from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from 'src/app/Services/products/products.service';
 
