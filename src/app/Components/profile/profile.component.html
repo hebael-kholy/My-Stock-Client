@@ -1,7 +1,7 @@
 <div class="nav-settings">
     <div class="sideNavbar">
         <div class="userImg">
-            <img src="./assets/yasmeen.jpg" alt="user">
+            <img src='./assets/yasmeen.jpg' alt="user">
         </div>
         <ul>
             <li routerLinkActive="active"><span><i class="bi bi-gear-fill"></i></span><a class="nav-link rounded" routerLink="/profile">Settings</a></li>
@@ -21,7 +21,7 @@
                 <input #email type="email" [value]="mail">
              </div>
            </div>
-             <a  class="changePic" href="">Change Picture</a>
+             <input type="file" name="" id="uploadImg">
              <input type="button" value="Save settings"(click)="Update(userName.value,email.value)">
 
         </form>
