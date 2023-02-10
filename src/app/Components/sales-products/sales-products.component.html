@@ -3,7 +3,7 @@
   <div class="container text-center mb-4 mt-4">
     <div class="title text-center pt-3 pb-3 mt-3">
       <h2 class="position-relative d-inline-block ms-4">
-        Products
+        Sales Products
       </h2>
     </div>
     <div class="text-center">
@@ -13,7 +13,7 @@
       <ng-template carouselSlide *ngFor="let product of products">
         <div class="row" *ngIf="product; else loadingBlock">
           <div class="col m-3">
-            <div class="collection-img overflow-hidden">
+            <div class="collection-img position-relative overflow-hidden">
               <img src={{product.image}} alt="" width="200" height="320" class="w-100">
               <span class="position-absolute d-flex justify-content-center align-items-center bg-primary">sale</span>
             </div>

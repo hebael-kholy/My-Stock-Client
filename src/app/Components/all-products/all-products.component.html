@@ -1,7 +1,13 @@
+<!-- Search Bar -->
+<div class="form-group has-search">
+  <span class="fa fa-search form-control-feedback"></span>
+  <input type="text" class="form-control" [(ngModel)]="enter" (input)="ChangeCase()" placeholder="Search Products...">
+</div>
+
 <!-- Collection -->
 
 <section id="collection" class="py-5">
-  <div class="container">
+  <div class="container" id="tab">
     <div class="title text-center">
       <h2 class="position-relative d-inline-block text-capitalize">new collection</h2>
     </div>
@@ -25,31 +31,35 @@
     <div class="tab-content">
       <div class="tab-pane active mt-4 gx-0 gy-3 p-2" id="all">
         <div class="row">
-          <div class="col-md-6 col-lg-4 col-xl-3 mb-3" *ngFor="let product of products">
-            <div class="collection-img position-relative overflow-hidden">
-              <img src="{{product.image}}" alt="" width="200" height="300" class="w-100">
-            </div>
-            <div class="text-center">
-              <div class="rating mt-3">
-                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
-                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
-                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
-                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
-                <fa-icon [icon]="icon" class="text-primary"></fa-icon>
-                {{product.rating.rate}}
+          <div class="col-md-6 col-lg-4 col-xl-3 mb-3" *ngFor="let product of products | paginate:{ id:'list_pagination',
+        itemsPerPage:10 ,currentPage: page, totalItems: totalRecords}">
+            <div *ngIf="enterSearchValue === ''  || product.title.toLowerCase().includes(enterSearchValue)">
+              <div class="collection-img position-relative overflow-hidden">
+                <img src="{{product.image}}" alt="" width="200" height="300" class="w-100">
               </div>
-              <p class="text-capitalize my-1">{{product.category}}</p>
-              <span class="fw-bold">$ {{product.price}}</span>
-              <div class="btn-addcart">
-                <a routerLink="/" class="btn text-uppercase mt-3"><fa-icon [icon]="iconCart"></fa-icon> add to cart</a>
+              <div class="text-center">
+                <div class="rating mt-3">
+                  <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                  <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                  <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                  <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                  <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+                  {{product.rating.rate}}
+                </div>
+                <p class="my-1">{{product.title}}</p>
+                <span class="fw-bold">$ {{product.price}}</span>
+                <div class="btn-addcart">
+                  <a routerLink="/products/{{product.id}}" class="btn text-uppercase mt-3">Details</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="text-center">
+        <pagination-controls id="list_pagination" (pageChange)="page = $event" previousLabel="&lsaquo;"
+          nextLabel="&rsaquo;" class="my-pagination"></pagination-controls>
+      </div>
     </div>
-    <ng-template #loadingBlock>
-      <h1>Loading...</h1>
-    </ng-template>
   </div>
 </section>

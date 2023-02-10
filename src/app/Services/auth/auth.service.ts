@@ -1,26 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-
 export class LoginService {
+  isAuthenticated = false;
 
-  constructor(private router:RouterModule ,private httpClient:HttpClient){}
+  constructor(private router: Router, private httpClient: HttpClient) {}
 
-  onLogin(obj:any): Observable<any>{
-    return this.httpClient.post('https://ecommerceiti-heba.onrender.com/users/login', obj);
+  onLogin(obj: any): Observable<any> {
+    this.isAuthenticated = true;
+    return this.httpClient.post(
+      'https://ecommerceiti-heba.onrender.com/users/login',
+      obj
+    );
   }
 
-  createUser(data:any): Observable<any>{
-    return this.httpClient.post("https://ecommerceiti-heba.onrender.com/users/signup", data);
+  createUser(data: any): Observable<any> {
+    return this.httpClient.post(
+      'https://ecommerceiti-heba.onrender.com/users/signup',
+      data
+    );
   }
 
-    // isLogged() {
+  logOut() {
+    this.isAuthenticated = false;
+    localStorage.removeItem('token ');
+    location.reload();
+    this.router.navigate(['']);
+  }
+
+  checkLoginStatus() {
+    return localStorage.getItem('token ');
+  }
+
+  // isLogged() {
   //   return localStorage.getItem('token') != null;
   // }
   // IsLoggedOut() {
@@ -30,5 +47,4 @@ export class LoginService {
   // getToken() {
   //   return localStorage.getItem('token') || '';
   // }
-
 }
