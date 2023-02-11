@@ -9,21 +9,56 @@
         </ul>
     </div> 
     <div class="information">
-        <h2>Your account settings</h2>
-        <form action="">
-           <div class="inputLabels">
-             <div class="inputLabel">
-               <label for="">Name</label>
-               <label for="">Email address</label>
-            </div>
-            <div class="inputboxes">
-                <input #userName type="text" [value]="username">
-                <input #email type="email" [value]="mail">
-             </div>
-           </div>
-             <input type="file" name="" id="uploadImg">
-             <input type="button" value="Save settings"(click)="Update(userName.value,email.value)">
-
-        </form>
+        <h2>Your account settings</h2> 
+      <form action="" [formGroup]="form">
+        <table >
+            <tr>
+                <th>Name</th>
+                <td>
+                    <div *ngIf="isEditName">
+                        <input type="text" class="editInput" [(ngModel)]="username" formControlName="username">
+                        <div class="alert alert-danger" role="alert" *ngIf="!NameValid" >
+                            <div>
+                                {{nameError}}
+                            </div>
+                            <div>
+                                <i class="bi bi-exclamation-circle"></i> 
+                            </div>
+                          </div>
+                    </div>
+                    <div *ngIf="!isEditName" class="data">
+                        {{username}}
+                    </div>
+                </td>
+                <td class="editIcon">
+                    <i class="bi bi-pencil-fill" (click)="EditName(username)"></i>
+                </td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>
+                    <div *ngIf="isEditMail">
+                        <input type="text" class="editInput" [(ngModel)]="mail" formControlName="email" id="name">
+                        <div class="alert alert-danger" role="alert" *ngIf="!mailValid" >
+                            <div>
+                                {{mailError}}
+                            </div>
+                            <div>
+                                <i class="bi bi-exclamation-circle"></i> 
+                            </div>
+                          </div>
+                          
+                    </div>
+                    <div *ngIf="!isEditMail" class="data">
+                        {{mail}}
+                    </div>
+                </td> 
+                <td class="editIcon"> 
+                        <i class="bi bi-pencil-fill" (click)="EditMail(mail)"></i>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Save settings" (click)="Update(username,mail)">
+      </form>
     </div> 
 </div>

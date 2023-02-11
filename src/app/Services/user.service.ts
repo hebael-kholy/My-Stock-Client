@@ -15,7 +15,6 @@ export class UserService {
   token= localStorage.getItem('token');
   updateUser(id:any,newUser:any){
   const head = new HttpHeaders().set("Authorization", 'Bearer '+this.token);
-  //  const requestOptions = { headers: head };
    console.log("Bearer " +this.token);
     console.log(this.token);
     console.log(head);
@@ -23,5 +22,4 @@ export class UserService {
     return this.myUser.put(`${this.updateUrl}/${id}`, newUser, {headers:head});
   }
 
-  
 }

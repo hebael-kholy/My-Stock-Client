@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfileComponent } from "./ProfileComponent";
+import { ProfileComponent } from "./profile.component";
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;

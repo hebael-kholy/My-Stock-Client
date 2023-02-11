@@ -58,35 +58,13 @@ h2{
     margin-bottom: 60px;
     text-transform: uppercase;
 }
-.inputLabel label{
-    display: block;
-    margin-bottom: 25px;
-    font-weight: 600;
-}
-.inputLabel {
-    width: 15%;
-}
-.inputboxes input{
-    display: block;
-    margin-bottom: 25px;
-    width: 100%;
-}
-.inputboxes input:focus{
-    border-color: #c057f7;
-    outline: none;
-}
-.inputboxes{
-    width: 85%;
-}
-.inputLabels{
-    display: flex;
-    gap: 40px;
-}
+
 .changePic{
     color: black;
     display: block;
 }
-input[type= "button"]{
+
+input[type= "submit"]{
     background-color: #c057f7;
     padding: 10px;
     font-weight: 700;
@@ -95,14 +73,51 @@ input[type= "button"]{
     border-radius: 20px;
     border: none;
     position: absolute;
-right: 100px;
-margin-top: 20px;
-letter-spacing: 1px;
+    right: 100px;
+    margin-top: 60px;
+    letter-spacing: 1px;
 }
 
 input[type= "button"]:hover{
     background-color: #c482e7;
 }
+table{
+    width: 100%;
+}
+.editInput{
+    width: 95%;
+    padding: 0 5px;
+}
+.editInput:focus{
+    border-color: #c057f7;
+    outline: none;
+}
+.editIcon{
+    text-align: center;
+    padding-bottom: 5px;
+    display: flex;
+}
+.editIcon:hover{
+    cursor: pointer;
+}
+.data{
+    letter-spacing: 1px;
+}
+
+th{
+    padding: 8px 10px;
+    width:20%;
+    display: flex;
+}
+
+.alert-danger {
+    height: 29px;
+    padding: 0 9px;
+    width: 95%;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+  }
 
 /* responsive design */
 
@@ -110,15 +125,6 @@ input[type= "button"]:hover{
     .information{
         padding: 50px 50px;
     }
-    .inputLabels{
-        gap: 20px;
-      }
-      .inputLabel {
-        width: 25%;
-      }
-      .inputboxes{
-        width: 75%;
-      }
       li{
         font-size: 18px;
         padding-left: 20px;
@@ -144,17 +150,12 @@ input[type= "button"]:hover{
         padding: 50px 20px;
         width: 100%;
       }
-      .inputLabels{
-        gap: 10px;
-      }
+
       input[type="button"]{
         right: 25px;
       }
       h2{
         font-size: 21px;
       }
-      li{
-        font-size: 19px;
-        padding-left: 35px;
-      }
+      
 }
