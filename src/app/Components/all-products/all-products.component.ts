@@ -8,9 +8,18 @@ import { ProductsService } from 'src/app/Services/products/products.service';
   styleUrls: ['./all-products.component.css'],
 })
 export class AllProductsComponent implements OnInit {
+  page: number = 1;
+  totalRecords: number = 0;
   icon = faStar;
   iconCart = faCartShopping;
   products: any[] = [];
+  enterSearchValue: string = '';
+  enter: string = '';
+
+  ChangeCase() {
+    this.enterSearchValue = this.enter.toLocaleLowerCase();
+    // console.log(this.enterSearchValue);
+  }
 
   isLoading = false;
 
@@ -26,6 +35,7 @@ export class AllProductsComponent implements OnInit {
       console.log(data);
       this.isLoading = false;
       this.products = data;
+      this.totalRecords = data.length;
     });
   }
 }

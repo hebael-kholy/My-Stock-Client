@@ -19,6 +19,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AllProductsComponent } from './Components/all-products/all-products.component';
 import { SalesProductsComponent } from './Components/sales-products/sales-products.component';
 import { SideOrderComponent } from './Components/side-order/side-order.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,7 @@ import { SideOrderComponent } from './Components/side-order/side-order.component
     AllProductsComponent,
     SalesProductsComponent,
     SideOrderComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,9 @@ import { SideOrderComponent } from './Components/side-order/side-order.component
     CarouselModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgxPaginationModule,
+    MatIconModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

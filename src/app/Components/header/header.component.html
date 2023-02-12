@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light nav-menu">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="#"><img src="assets/icons8-e-commerce-64.png" width="60"><span
-        class="logo-info"> ATTIRE</span></a>
+        class="logo-info"> CRAFTS</span></a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,13 +35,28 @@
             <span class="position-absolute top-0 start-100 translate-middle badge">0</span>
           </a>
         </li>
-        <li class="nav-item m-3">
+        <li class="nav-item m-3" *ngIf="!authService.isAuthenticated && !loginStatus">
           <a class="nav-link btn rounded border text-light excluded" routerLink="/login"
             routerLinkActive="active">Login</a>
         </li>
-        <li class="nav-item m-3">
+        <li class="nav-item m-3" *ngIf="!authService.isAuthenticated && !loginStatus">
           <a class="nav-link btn rounded border text-light excluded" routerLink="/register"
             routerLinkActive="active">Register</a>
+        </li>
+        <li class="nav-item m-3" *ngIf="authService.isAuthenticated || loginStatus">
+          <div>
+            <button [matMenuTriggerFor]="menu" class="border-0 btn excluded bg-light p-0 m-0">
+              <img src="assets/profile.jpg" alt="" width="50" class="p-2">
+              User Name
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="logOut()">
+                <mat-icon>exit_to_app</mat-icon>
+                Logout
+              </button>
+            </mat-menu>
+          </div>
         </li>
       </ul>
     </div>
