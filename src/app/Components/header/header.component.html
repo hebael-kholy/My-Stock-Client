@@ -46,8 +46,8 @@
         <li class="nav-item m-3" *ngIf="authService.isAuthenticated || loginStatus">
           <div>
             <button [matMenuTriggerFor]="menu" class="border-0 btn excluded bg-light p-0 m-0">
-              <img src="assets/profile.jpg" alt="" width="50" class="p-2">
-              User Name
+              <img src="{{image}}" alt="user" width=" 50" class="p-2">
+              <span style="text-transform: capitalize;">&nbsp;&nbsp;{{username}}</span>
               <mat-icon>keyboard_arrow_down</mat-icon>
             </button>
             <mat-menu #menu="matMenu">

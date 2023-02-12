@@ -9,12 +9,13 @@ import { AllProductsComponent } from './Components/all-products/all-products.com
 import { SideOrderComponent } from './Components/side-order/side-order.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { CartComponent } from './Components/cart/cart.component';
+import { ProfileGuard } from './Guards/profile.guard';
 // import { ErrorComponent } from './Components/error/error.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard] },
   { path: 'profile/settings', component: ProfileComponent },
   { path: 'profile/orders', component: SideOrderComponent },
   { path: 'login', component: LoginComponent },

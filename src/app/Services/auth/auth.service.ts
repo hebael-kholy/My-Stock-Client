@@ -28,13 +28,15 @@ export class LoginService {
 
   logOut() {
     this.isAuthenticated = false;
-    localStorage.removeItem('token ');
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('password');
     location.reload();
     this.router.navigate(['']);
   }
 
   checkLoginStatus() {
-    return localStorage.getItem('token ');
+    return localStorage.getItem('token');
   }
 
   // isLogged() {

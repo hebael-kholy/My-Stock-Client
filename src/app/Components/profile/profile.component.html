@@ -1,28 +1,66 @@
 <div class="nav-settings">
-    <div class="sideNavbar">
-        <div class="userImg">
-            <img src="./assets/yasmeen.jpg" alt="user">
-        </div>
-        <ul>
-            <li routerLinkActive="active"><span><i class="bi bi-gear-fill"></i></span><a class="nav-link rounded" routerLink="/profile">Settings</a></li>
-            <li routerLinkActive="active"><span><i class="bi bi-cart-check-fill"></i></span><a class="nav-link rounded" routerLink="/profile/orders" >My Orders</a></li>
-        </ul>
-    </div> 
-    <div class="information">
-        <h2>Your account settings</h2>
-        <form action="">
-           <div class="inputLabels">
-             <div class="inputLabel">
-               <label for="">Name</label>
-               <label for="">Email address</label>
+  <div class="sideNavbar">
+    <div class="userImg">
+      <img src="{{image}}" alt=" user">
+    </div>
+    <ul>
+      <li routerLinkActive="active"><span><i class="bi bi-gear-fill"></i></span><a class="nav-link rounded"
+          routerLink="/profile">Settings</a></li>
+      <li routerLinkActive="active"><span><i class="bi bi-cart-check-fill"></i></span><a class="nav-link rounded"
+          routerLink="/profile/orders">My Orders</a></li>
+    </ul>
+  </div>
+  <div class="information">
+    <h2>Your account settings</h2>
+    <form action="" [formGroup]="form">
+      <table>
+        <tr>
+          <th>Name</th>
+          <td>
+            <div *ngIf="isEditName">
+              <input type="text" class="editInput" [(ngModel)]="username" formControlName="username">
+              <div class="alert alert-danger" role="alert" *ngIf="!NameValid">
+                <div>
+                  {{nameError}}
+                </div>
+                <div>
+                  <i class="bi bi-exclamation-circle"></i>
+                </div>
+              </div>
             </div>
-            <div class="inputboxes">
-                <input type="text">
-                <input type="email">
-             </div>
-           </div>
-             <a  class="changePic" href="">Change Picture</a>
-             <input type="button" value="Save settings">
-        </form>
-    </div> 
+            <div *ngIf="!isEditName" class="data">
+              {{username}}
+            </div>
+          </td>
+          <td class="editIcon">
+            <i class="bi bi-pencil-fill" (click)="EditName(username)"></i>
+          </td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td>
+            <div *ngIf="isEditMail">
+              <input type="text" class="editInput" [(ngModel)]="mail" formControlName="email" id="name">
+              <div class="alert alert-danger" role="alert" *ngIf="!mailValid">
+                <div>
+                  {{mailError}}
+                </div>
+                <div>
+                  <i class="bi bi-exclamation-circle"></i>
+                </div>
+              </div>
+
+            </div>
+            <div *ngIf="!isEditMail" class="data">
+              {{mail}}
+            </div>
+          </td>
+          <td class="editIcon">
+            <i class="bi bi-pencil-fill" (click)="EditMail(mail)"></i>
+          </td>
+        </tr>
+      </table>
+      <input type="submit" value="Save settings" (click)="Update(username,mail)">
+    </form>
+  </div>
 </div>
