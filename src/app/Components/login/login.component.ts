@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
       (res: any) => {
         console.log('res ', res);
         localStorage.setItem('token ', res.token);
+        localStorage.setItem('user',JSON.stringify(res.user));
         Swal.fire('Thank You...', 'You Login Successfully', 'success');
         this.router.navigateByUrl('');
         this.isLoading = false;
