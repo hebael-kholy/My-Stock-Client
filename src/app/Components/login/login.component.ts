@@ -60,18 +60,22 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.isLoading = true;
-    this.accservices.onLogin(this.loginObj).subscribe(
-      (res: any) => {
-        console.log('res ', res);
-        localStorage.setItem('token ', res.token);
-        Swal.fire('Thank You...', 'You Login Successfully', 'success');
-        this.router.navigateByUrl('');
-        this.isLoading = false;
-      },
-      (err) => {
-        Swal.fire('Sorry....', 'Invalid Email or Password', 'error');
-        this.isLoading = false;
-      }
+    this.accservices.onLogin(this.loginObj).subscribe((res:any)=>{
+      console.log('res', res);
+      localStorage.setItem('token', res.token);
+      localStorage.setItem('id', res.user._id);
+      localStorage.setItem('name', res.user.name);
+      localStorage.setItem('mail', res.user.email);
+      localStorage.setItem('password', res.user.password);
+      localStorage.setItem('gender', res.user.gender);
+      localStorage.setItem('image', res.user.image);
+      Swal.fire('Thank You...', 'You Login Successfully', 'success');
+      this.router.navigateByUrl('');
+      this.isLoading = false;
+    },err=>{
+       Swal.fire('Sorry....', 'Invalid Email or Password', 'error');
+      this.isLoading = false;
+     }
     );
   }
 
