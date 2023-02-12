@@ -1,7 +1,7 @@
 <div class="nav-settings">
     <div class="sideNavbar">
         <div class="userImg">
-            <img src='./assets/yasmeen.jpg' alt="user">
+            <img src= "{{imagePath}}" alt="user">
         </div>
         <ul>
             <li routerLinkActive="active"><span><i class="bi bi-gear-fill"></i></span><a class="nav-link rounded" routerLink="/profile">Settings</a></li>
@@ -57,8 +57,26 @@
                         <i class="bi bi-pencil-fill" (click)="EditMail(mail)"></i>
                 </td>
             </tr>
+            <tr>
+                <th>Gender</th>
+                <td>
+                    <div *ngIf="isEditGender" class="data">
+                        <select #gender id="select_box" (change)="onSelected(gender.value)">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                          </select>
+                    </div>
+                    <div *ngIf="!isEditGender" class="data">
+                        {{gender}}
+                    </div>
+
+                </td>
+                <td class="editIcon"> 
+                        <i class="bi bi-pencil-fill" (click)="EditGender()"></i>
+                </td>
+            </tr>
         </table>
-        <input type="submit" value="Save settings" (click)="Update(username,mail)">
+        <input type="submit" value="Save settings" (click)="Update(username,mail,gender)">
       </form>
     </div> 
 </div>

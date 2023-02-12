@@ -10,6 +10,10 @@ export class UserService {
   constructor(private myUser:HttpClient) { }
    baseUrl = "https://ecommerceiti-heba.onrender.com/users";
    updateUrl = "https://ecommerceiti-heba.onrender.com/users/update"
+
+   getUsers() {
+    return this.myUser.get(this.baseUrl);
+   }
   
   //update user
   token= localStorage.getItem('token');

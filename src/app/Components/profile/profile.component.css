@@ -119,6 +119,11 @@ th{
     justify-content: space-between;
   }
 
+select{
+    width: 95%;
+    border-radius: 3px;
+    background-color: white;
+}
 /* responsive design */
 
 @media (max-width: 910px){

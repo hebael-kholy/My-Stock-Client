@@ -19,12 +19,14 @@ export class ProfileComponent implements OnInit {
   mail:any;
   token:any;
   imagePath:any;
+  gender :any;
   isEditName = false;
   isEditMail = false;
+  isEditGender  = false;
   
   form = new FormGroup({
-    username: new FormControl(null,[Validators.required, Validators.minLength(3)]),
-    email: new FormControl(null, [Validators.required ,Validators.email])
+    username: new FormControl("",[Validators.required, Validators.minLength(3)]),
+    email: new FormControl("", [Validators.required ,Validators.email])
   })
  
   @Output() formEvent = new EventEmitter();
@@ -48,31 +50,60 @@ export class ProfileComponent implements OnInit {
          console.log(this.mail);       
          this.idUser = localStorage.getItem('id');
          console.log(this.idUser);
+         this.imagePath = localStorage.getItem('image');
+         console.log(this.imagePath);
+         this.gender = localStorage.getItem('gender');
+
+         //get all users
+         this.myService.getUsers().subscribe({
+          next: (res) => {
+            this.user = res;
+            console.log(this.user);
+            // console.log(this.user.data[0].gender);
+          },
+          error(err) {
+            console.log(err);
+          }
+        });
+
+        // this.imagePath = this.user.data.image;
         }
+        // switch inputs display
         EditName(item:any){
-          this.isEditMail = false;
           this.isEditName = true;
+          this.isEditMail = false;
+          this.isEditGender  = false;
         }
         EditMail(item:any){
           this.isEditMail = true;
           this.isEditName = false;
+          this.isEditGender  = false;
+        }
+        EditGender(){
+          this.isEditGender  = true;
+          this.isEditMail = false;
+          this.isEditName = false;
+        }
+        // drop down box to select
+        onSelected(value:string): void {
+          this.gender = value;
+          console.log(this.gender);
         }
 
-        Update(name:any,email:any){          
-    let user ={name,email};
+
+        // update user
+       Update(name:any,email:any, gender:any){          
+    let user ={name,email,gender};
     console.log(user);
     if(this.form.status ==="VALID"){
       this.formEvent.emit(this.form.value);
-      this.myService.updateUser(this.idUser,user).subscribe();
-      Swal.fire('Done', 'Updated Successfully', 'success');
-      this.isEditName = false;
-      this.isEditMail = false;
+      // this.isEditName = false;
+      // this.isEditMail = false;
     }else{
       this.nameError = "name is required";
-      this.mailError =" pattern must be email@example.com"
-      
+      this.mailError =" pattern must be email@example.com" 
     }
+    this.myService.updateUser(this.idUser,user).subscribe();
+    Swal.fire('Done', 'Updated Successfully', 'success');
  }
- 
 }
-
