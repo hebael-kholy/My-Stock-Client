@@ -34,7 +34,7 @@ export class AllProductsComponent implements OnInit {
     this.myService.getAllProducts().subscribe((data: any) => {
       console.log(data);
       this.isLoading = false;
-      this.products = data;
+      this.products = data.data;
       this.totalRecords = data.length;
     });
   }

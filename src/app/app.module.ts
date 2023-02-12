@@ -23,6 +23,7 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { CartComponent } from './Components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MatMenuModule } from '@angular/material/menu';
     SalesProductsComponent,
     SideOrderComponent,
     ProductDetailsComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
