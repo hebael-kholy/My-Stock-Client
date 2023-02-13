@@ -107,7 +107,6 @@ table{
 th{
     padding: 8px 10px;
     width:20%;
-    display: flex;
 }
 
 .alert-danger {
@@ -123,6 +122,14 @@ select{
     width: 95%;
     border-radius: 3px;
     background-color: white;
+    padding: 0px;
+}
+input[type="file"] {
+    display: none;
+}
+.change-pic{
+    display: inline-block;
+    cursor: pointer;
 }
 /* responsive design */
 

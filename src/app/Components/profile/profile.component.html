@@ -75,6 +75,15 @@
                         <i class="bi bi-pencil-fill" (click)="EditGender()"></i>
                 </td>
             </tr>
+            <tr>
+                <th>Change Picture</th>
+                <td colspan="2">
+                  <label class="change-pic">
+                    Select img
+                      <input type="file" class="upload">
+                  </label> 
+                </td>
+            </tr>
         </table>
         <input type="submit" value="Save settings" (click)="Update(username,mail,gender)">
       </form>
