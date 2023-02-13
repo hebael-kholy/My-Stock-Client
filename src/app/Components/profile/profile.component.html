@@ -17,7 +17,7 @@
                 <td>
                     <div *ngIf="isEditName">
                         <input type="text" class="editInput" [(ngModel)]="username" formControlName="username">
-                        <div class="alert alert-danger" role="alert" *ngIf="!NameValid" >
+                        <div class="alert alert-danger" role="alert" *ngIf="!NameValid" >y
                             <div>
                                 {{nameError}}
                             </div>
@@ -62,8 +62,9 @@
                 <td>
                     <div *ngIf="isEditGender" class="data">
                         <select #gender id="select_box" (change)="onSelected(gender.value)">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
                           </select>
                     </div>
                     <div *ngIf="!isEditGender" class="data">
@@ -77,11 +78,13 @@
             </tr>
             <tr>
                 <th>Change Picture</th>
-                <td colspan="2">
+                <td>
                   <label class="change-pic">
-                    Select img
-                      <input type="file" class="upload">
+                      <input type="file" id="file" class="fileControlInput" multiple="multiple" accept=".png,.jpg,.jpge/*"  (change)="handleFileInput($event)" />
                   </label> 
+                </td>
+                <td>
+                    <input type="button" value="Upload" class="btnUpload" (click)="Upload()">
                 </td>
             </tr>
         </table>

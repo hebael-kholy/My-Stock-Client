@@ -124,13 +124,13 @@ select{
     background-color: white;
     padding: 0px;
 }
-input[type="file"] {
+/* input[type="file"] {
     display: none;
-}
-.change-pic{
+} */
+/* .change-pic{
     display: inline-block;
     cursor: pointer;
-}
+} */
 /* responsive design */
 
 @media (max-width: 910px){

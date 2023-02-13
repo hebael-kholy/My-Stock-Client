@@ -23,7 +23,9 @@ export class ProfileComponent implements OnInit {
   isEditName = false;
   isEditMail = false;
   isEditGender  = false;
-  
+  pic:any;
+  File:any;
+
   form = new FormGroup({
     username: new FormControl("",[Validators.required, Validators.minLength(3)]),
     email: new FormControl("", [Validators.required ,Validators.email])
@@ -42,6 +44,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(myActivated:ActivatedRoute,public myService:UserService){ }
   ngOnInit(): void {
+     //set values in local storage
          this.token= localStorage.getItem('token'); 
          console.log(this.token);
          this.username = localStorage.getItem('name'); 
@@ -53,7 +56,7 @@ export class ProfileComponent implements OnInit {
          this.imagePath = localStorage.getItem('image');
          console.log(this.imagePath);
          this.gender = localStorage.getItem('gender');
-
+     
          //get all users
          this.myService.getUsers().subscribe({
           next: (res) => {
@@ -65,10 +68,9 @@ export class ProfileComponent implements OnInit {
             console.log(err);
           }
         });
-
-        // this.imagePath = this.user.data.image;
+// end ngOnIt
         }
-        // switch inputs display
+        // switch inputs display editing
         EditName(item:any){
           this.isEditName = true;
           this.isEditMail = false;
@@ -84,12 +86,28 @@ export class ProfileComponent implements OnInit {
           this.isEditMail = false;
           this.isEditName = false;
         }
+
         // drop down box to select
         onSelected(value:string): void {
           this.gender = value;
           console.log(this.gender);
         }
 
+      // change  profile pic
+    handleFileInput(event:any) {
+      this.File = event.target.files[0];
+      console.log(this.File);
+  }
+    Upload(){
+      const formData = new FormData();
+       formData.append("image", this.File);
+       console.log(formData);
+      this.myService.updateUserImage(this.idUser,formData).subscribe();
+      console.log(this.idUser);
+      Swal.fire('Done', 'Updated picture', 'success');
+
+    }
+    //  this.myService.updateUserImage(this.idUser,user).subscribe();
 
         // update user
        Update(name:any,email:any, gender:any){          
@@ -97,8 +115,6 @@ export class ProfileComponent implements OnInit {
     console.log(user);
     if(this.form.status ==="VALID"){
       this.formEvent.emit(this.form.value);
-      // this.isEditName = false;
-      // this.isEditMail = false;
     }else{
       this.nameError = "name is required";
       this.mailError =" pattern must be email@example.com" 

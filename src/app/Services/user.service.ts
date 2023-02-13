@@ -9,12 +9,17 @@ export class UserService {
 
   constructor(private myUser:HttpClient) { }
    baseUrl = "https://ecommerceiti-heba.onrender.com/users";
-   updateUrl = "https://ecommerceiti-heba.onrender.com/users/update"
+   updateUrl = "https://ecommerceiti-heba.onrender.com/users/update";
+   imageUrl = "https://ecommerceiti-heba.onrender.com/users/images"
 
    getUsers() {
     return this.myUser.get(this.baseUrl);
    }
   
+   //update image
+   updateUserImage(id:any,imageFile:any) {
+    return this.myUser.put(`${this.imageUrl}/${id}`, imageFile);
+   }
   //update user
   token= localStorage.getItem('token');
   updateUser(id:any,newUser:any){
