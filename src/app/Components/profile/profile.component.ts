@@ -24,6 +24,8 @@ export class ProfileComponent implements OnInit {
   isEditMail = false;
   isEditGender  = false;
   File:any;
+  imgText = "Select Image";
+  isLoading = false;
 
   form = new FormGroup({
     username: new FormControl("",[Validators.required, Validators.minLength(3)]),
@@ -57,10 +59,11 @@ export class ProfileComponent implements OnInit {
          this.gender = localStorage.getItem('gender');
      
          //get all users
-         this.myService.getUsers().subscribe({
+         this.myService.getOneUser(this.idUser).subscribe({
           next: (res) => {
             this.user = res;
             console.log(this.user);
+            console.log(this.user.data.name);
             // console.log(this.user.data[0].gender);
           },
           error(err) {
@@ -96,18 +99,31 @@ export class ProfileComponent implements OnInit {
     handleFileInput(event:any) {
       this.File = event.target.files[0];
       console.log(this.File);
+      this.imgText = this.File.name;
   }
     Upload(){
       const formData = new FormData();
        formData.append("image", this.File);
        console.log(formData);
-      this.myService.updateUserImage(this.idUser,formData).subscribe();
-      console.log(this.idUser);
-      if(this.File){
-        Swal.fire('Done', 'Updated picture', 'success');
-      }else{
+       this.isLoading = true
+      this.myService.updateUserImage(this.idUser,formData).subscribe((res:any)=>{
+        console.log(res);
+        this.imagePath = res.user.image;
+        this.isLoading = false;
+      },err=>{
         Swal.fire('Sorry....', 'please select img to change', 'error');
-      }
+      });
+      // console.log(this.idUser);
+      // if(this.File){
+      //   console.log(this.imagePath);
+      //   this.imagePath = this.user.data.image;
+      //   console.log(this.imagePath);
+
+      //   // Swal.fire('Done', 'Updated picture', 'success');
+      // }else{
+      //   Swal.fire('Sorry....', 'please select img to change', 'error');
+      // }
+      console.log(this.imagePath);
 
     }
     //  this.myService.updateUserImage(this.idUser,user).subscribe();

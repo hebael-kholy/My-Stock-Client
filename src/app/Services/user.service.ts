@@ -12,8 +12,8 @@ export class UserService {
    updateUrl = "https://ecommerceiti-heba.onrender.com/users/update";
    imageUrl = "https://ecommerceiti-heba.onrender.com/users/images"
 
-   getUsers() {
-    return this.myUser.get(this.baseUrl);
+   getOneUser(id:any) {
+    return this.myUser.get(`${this.baseUrl}/${id}`);
    }
   
    //update image

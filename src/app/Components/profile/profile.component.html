@@ -80,17 +80,22 @@
                 <th>Change Picture</th>
                 <td>
                   <label class="change-pic">
-                    select img
-                    <i class="fa fa-2x fa-camera"></i>
+                    <i class="fa fa-2x fa-camera cameraIcon"></i>
+                    <span class="textimg">{{imgText}}</span>
                     <input type="file" id="file" class="fileControlInput" multiple="multiple" accept=".png,.jpg,.jpge/*"  (change)="handleFileInput($event)" />
-                  </label> 
-                </td>
-                <td>
-                    <input type="button" value="Upload" class="btnUpload" (click)="Upload()">
+                </label> 
+            </td>
+            <td class="uploadCell" style="position: relative;">
+                <span class="btnUpload" (click)="Upload()">
+                    <i class="bi bi-upload uploadIcon" title="Upload image"></i>
+                </span>
                 </td>
             </tr>
         </table>
         <input type="submit" value="Save settings" (click)="Update(username,mail,gender)">
-      </form>
+    <div class="text-center" *ngIf="isLoading">
+        <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
+    </div>
+    </form>
     </div> 
 </div>
