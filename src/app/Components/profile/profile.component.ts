@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
   isEditName = false;
   isEditMail = false;
   isEditGender  = false;
-  pic:any;
   File:any;
 
   form = new FormGroup({
@@ -104,7 +103,11 @@ export class ProfileComponent implements OnInit {
        console.log(formData);
       this.myService.updateUserImage(this.idUser,formData).subscribe();
       console.log(this.idUser);
-      Swal.fire('Done', 'Updated picture', 'success');
+      if(this.File){
+        Swal.fire('Done', 'Updated picture', 'success');
+      }else{
+        Swal.fire('Sorry....', 'please select img to change', 'error');
+      }
 
     }
     //  this.myService.updateUserImage(this.idUser,user).subscribe();
