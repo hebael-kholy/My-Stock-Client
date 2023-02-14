@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/Services/auth/auth.service';
 import Swal from 'sweetalert2';
+import { UserService } from 'src/app/Services/user.service';
 export class User {
   name!: string;
   password!: string;
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private accservices: LoginService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userServ: UserService
   ) {}
 
   ngOnInit(): void {
@@ -60,22 +62,35 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.isLoading = true;
-    this.accservices.onLogin(this.loginObj).subscribe((res:any)=>{
-      console.log('res', res);
-      localStorage.setItem('token', res.token);
-      localStorage.setItem('id', res.user._id);
-      localStorage.setItem('name', res.user.name);
-      localStorage.setItem('mail', res.user.email);
-      localStorage.setItem('password', res.user.password);
-      localStorage.setItem('gender', res.user.gender);
-      localStorage.setItem('image', res.user.image);
-      Swal.fire('Thank You...', 'You Login Successfully', 'success');
-      this.router.navigateByUrl('');
-      this.isLoading = false;
-    },err=>{
-       Swal.fire('Sorry....', 'Invalid Email or Password', 'error');
-      this.isLoading = false;
-     }
+    this.accservices.onLogin(this.loginObj).subscribe(
+      (res: any) => {
+        console.log('res', res);
+        if (this.userServ.isUpdated === true) {
+          //if true set all data with edited name, mail
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('id', res.user._id);
+          localStorage.setItem('name', res.user.name);
+          localStorage.setItem('mail', res.user.email);
+          localStorage.setItem('password', res.user.password);
+          localStorage.setItem('gender', res.user.gender);
+          localStorage.setItem('image', res.user.image);
+          localStorage.setItem('user',JSON.stringify(res.user));
+        } else {
+          //if false, dont set the name, mail with new ones, let the old data
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('id', res.user._id);
+          localStorage.setItem('password', res.user.password);
+          localStorage.setItem('gender', res.user.gender);
+          localStorage.setItem('image', res.user.image);
+        }
+        Swal.fire('Thank You...', 'You Login Successfully', 'success');
+        this.router.navigateByUrl('');
+        this.isLoading = false;
+      },
+      (err) => {
+        Swal.fire('Sorry....', 'Invalid Email or Password', 'error');
+        this.isLoading = false;
+      }
     );
   }
 
