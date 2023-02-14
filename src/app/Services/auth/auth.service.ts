@@ -30,7 +30,12 @@ export class LoginService {
     this.isAuthenticated = false;
     localStorage.removeItem('token');
     localStorage.removeItem('id');
+    localStorage.removeItem('name');
+    localStorage.removeItem('mail');
     localStorage.removeItem('password');
+    localStorage.removeItem('gender');
+    localStorage.removeItem('image');
+    localStorage.removeItem('user');
     location.reload();
     this.router.navigate(['']);
   }

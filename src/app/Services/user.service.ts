@@ -8,20 +8,17 @@ export class UserService {
   constructor(private myUser: HttpClient) {}
   baseUrl = 'https://ecommerceiti-heba.onrender.com/users';
   updateUrl = 'https://ecommerceiti-heba.onrender.com/users/update';
+  imageUrl = 'https://ecommerceiti-heba.onrender.com/users/images';
 
-  constructor(private myUser:HttpClient) { }
-   baseUrl = "https://ecommerceiti-heba.onrender.com/users";
-   updateUrl = "https://ecommerceiti-heba.onrender.com/users/update";
-   imageUrl = "https://ecommerceiti-heba.onrender.com/users/images"
-
-   getOneUser(id:any) {
+  getOneUser(id: any) {
     return this.myUser.get(`${this.baseUrl}/${id}`);
-   }
-  
-   //update image
-   updateUserImage(id:any,imageFile:any) {
+  }
+
+  //update image
+  updateUserImage(id: any, imageFile: any) {
+    this.isUpdated = true;
     return this.myUser.put(`${this.imageUrl}/${id}`, imageFile);
-   }
+  }
 
   isUpdated = false;
   //update user

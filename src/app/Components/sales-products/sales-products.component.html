@@ -11,7 +11,7 @@
     </div>
     <owl-carousel-o [options]="customOptions">
       <ng-template carouselSlide *ngFor="let product of products">
-        <div class="row" *ngIf="product; else loadingBlock">
+        <div class="row">
           <div class="col m-3">
             <div class="collection-img position-relative overflow-hidden">
               <img src={{product.image}} alt="" width="200" height="320" class="w-100">
@@ -24,7 +24,7 @@
                 <fa-icon [icon]="icon" class="text-primary"></fa-icon>
                 <fa-icon [icon]="icon" class="text-primary"></fa-icon>
                 <fa-icon [icon]="icon" class="text-primary"></fa-icon>
-                {{product.rating.rate}}
+                {{product.rating}}
               </div>
               <p class="text-capitalize my-1">product</p>
               <span class="fw-bold">$ {{product.price}}</span>
@@ -34,9 +34,6 @@
             </div>
           </div>
         </div>
-      </ng-template>
-      <ng-template #loadingBlock>
-        <h1>Loading...</h1>
       </ng-template>
     </owl-carousel-o>
   </div>

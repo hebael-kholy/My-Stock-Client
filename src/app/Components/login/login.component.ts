@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
     this.accservices.onLogin(this.loginObj).subscribe(
       (res: any) => {
         console.log('res', res);
-        if (this.userServ.isUpdated === true) {
+        if (this.userServ.isUpdated === false) {
           //if true set all data with edited name, mail
           localStorage.setItem('token', res.token);
           localStorage.setItem('id', res.user._id);
@@ -74,17 +74,16 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('password', res.user.password);
           localStorage.setItem('gender', res.user.gender);
           localStorage.setItem('image', res.user.image);
-          localStorage.setItem('user',JSON.stringify(res.user));
+          localStorage.setItem('user', JSON.stringify(res.user));
         } else {
           //if false, dont set the name, mail with new ones, let the old data
           localStorage.setItem('token', res.token);
           localStorage.setItem('id', res.user._id);
           localStorage.setItem('password', res.user.password);
           localStorage.setItem('gender', res.user.gender);
-          localStorage.setItem('image', res.user.image);
         }
         Swal.fire('Thank You...', 'You Login Successfully', 'success');
-        this.router.navigateByUrl('');
+        this.router.navigate(['/home']);
         this.isLoading = false;
       },
       (err) => {

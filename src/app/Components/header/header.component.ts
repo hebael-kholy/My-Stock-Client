@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { LoginService } from 'src/app/Services/auth/auth.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -14,12 +15,15 @@ export class HeaderComponent implements OnInit {
   username: any;
   image: any;
 
-  ngOnInit() {
-    this.username = localStorage.getItem('name');
+  constructor(
+    public authService: LoginService,
+    public userService: UserService
+  ) {}
+  ngAfterViewChecked(): void {
     this.image = localStorage.getItem('image');
+    this.username = localStorage.getItem('name');
   }
-
-  constructor(public authService: LoginService) {}
+  ngOnInit(): void {}
 
   loginStatus = this.authService.checkLoginStatus();
 

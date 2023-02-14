@@ -22,9 +22,8 @@ const routes: Routes = [
   { path: 'products', component: AllProductsComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'register', component: RegisterComponent },
-  {path:'getCart' ,component: CartComponent },
+  { path: 'getCart', component: CartComponent },
   { path: '**', redirectTo: '' },
- 
 ];
 
 @NgModule({
