@@ -34,4 +34,17 @@ export class UserService {
       headers: head,
     });
   }
+
+  //user orders
+  orderUrl= "https://ecommerceiti-heba.onrender.com/order/user";
+  // cancelUrl = "https://ecommerceiti-heba.onrender.com/order/63ebd5ba9ac56a432b293996/cancle"
+  getAccept(id:any){
+    return this.myUser.get(`${this.orderUrl}/${id}?status=accepted`);
+  }
+  getPending(id:any){
+    return this.myUser.get(`${this.orderUrl}/${id}?status=pending`);
+  }
+  getReject(id:any){
+    return this.myUser.get(`${this.orderUrl}/${id}?status=rejected`);
+  }
 }
