@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-side-order',
@@ -14,12 +15,7 @@ export class SideOrderComponent implements OnInit {
   acceptorders:any;
   pendingOrders:any;
   rejectOrders:any;
-  data:any[] =[];
-  dataPending:any[] =[];
-  dataReject:any[] =[];
-  statusAccept = true;
-  statusPending = false;
-  statusReject = false;
+  status = 'accepted';
   title :any;
   isloading = true;
   constructor(myActivated: ActivatedRoute, public myService: UserService) {}
@@ -41,70 +37,71 @@ export class SideOrderComponent implements OnInit {
       next:(res)=>{
         this.acceptorders = res;
          console.log(res);
-        // loop for adding data in array
-        for(let i = 0; i < (this.acceptorders.data).length; i++) { // 3
-          (this.data).push(this.acceptorders.data[i]);
-        }
         this.isloading = false;
-        console.log(this.data);
+        // console.log(this.data);
       },
       error:(err)=>{},
     });
-    this.myService.getPending(this.idUser).subscribe({
-      next:(res)=>{
-        this.pendingOrders = res;
-        console.log(res);
-       // loop for adding data in array
-       for(let i = 0; i < (this.pendingOrders.data).length; i++) { // 3
-         (this.dataPending).push(this.pendingOrders.data[i]);
-       }
-       this.isloading = false;
-       console.log(this.dataPending);
-      },
-      error:(err)=>{},
-    });
+    // this.myService.getPending(this.idUser).subscribe({
+    //   next:(res)=>{
+    //     this.pendingOrders = res;
+    //     console.log(res);
+    //    // loop for adding data in array
+    //    for(let i = 0; i < (this.pendingOrders.data).length; i++) { // 3
+    //      (this.dataPending).push(this.pendingOrders.data[i]);
+    //    }
+    //    this.isloading = false;
+    //    console.log(this.dataPending);
+    //   },
+    //   error:(err)=>{},
+    // });
+   
     this.myService.getReject(this.idUser).subscribe({
       next:(res)=>{
         this.rejectOrders = res;
         console.log(res);
-       // loop for adding data in array
-       for(let i = 0; i < (this.rejectOrders.data).length; i++) { // 3
-         (this.dataReject).push(this.rejectOrders.data[i]);
-       }
        this.isloading = false;
-       console.log(this.dataReject);
+      //  console.log(this.dataReject);
       },
       error:(err)=>{},
     });
-
+    this.getPending();
     //end ngOnIt
   }
+  getPending(){
+    this.myService.getPending(this.idUser).subscribe({
+      next:(res)=>{
+        this.pendingOrders = res;
+        console.log(res);
+       this.isloading = false;
+       console.log("this data pending",this.pendingOrders);
+      },
+      error:(err)=>{},
+    });
+  }
   accepted(){
-    this.statusAccept = true;
-    this.statusPending = false;
-    this.statusReject = false;
-    console.log("accept");
+    this.status = 'accepted';
   }
   pending(){
-    this.statusPending = true;
-    this.statusAccept = false;
-    this.statusReject = false;
-    console.log("pending");
+    this.status = 'pending';
   }
   rejected(){
-    this.statusPending = false;
-    this.statusAccept = false;
-    this.statusReject = true;
-    console.log("rejected");
+    this.status ='rejected';
   }
+  searchText:string = '';
 
-  search(){
-    if(this.title ==""){
-      this.ngOnInit();
-    }else{
-      this.acceptorders = this.acceptorders.filter((res: { title: string; })=>{
-        return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase());
-      })
-    }
+  onSearchTextEntered(searchValue:string){
+    this.searchText = searchValue;
+    console.log(this.searchText);
+  }
+  deleteOrder(event:any,id:any){
+    this.myService.deleteOrder(id,'').subscribe(
+      { next:(req)=>{
+        console.log(req);
+        this.getPending();
+        Swal.fire('Deleted successfully ', 'Updated picture', 'success');
+      },
+      error:(err)=>{console.log(err)}}
+      );
   }
 }

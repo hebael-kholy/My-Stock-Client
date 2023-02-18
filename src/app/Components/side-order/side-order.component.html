@@ -17,17 +17,19 @@
           <option value="Success" (click)="accepted()">Success</option>
           <option value="Pending" (click)="pending()">Pending</option>
           <option value="Rejected" (click)="rejected()">Rejected</option>
-          <option value="Cancel">Cancel</option>
         </select>
       </div>
-      <div><input type="search" name="title" placeholder="Search" [(ngModel)]="title" (ngModelChange)="search()"></div>
-      <div>
+      <!-- <div>
+        <app-search-order (searchTextChanged)="onSearchTextEntered($event)"></app-search-order>
+        <input type="search" name="title" placeholder="Search">
+      </div> -->
+      <!-- <div>
         <select name="" id="">
           <option value="" disabled selected>order by</option>
           <option value="Success">Alphapet</option>
           <option value="Pending">Date</option>
         </select>
-      </div>
+      </div> -->
     </div>
     <div class="navOrder">
       <div class="item">
@@ -42,12 +44,14 @@
       </div>
     </div>
     <hr>
-    <div class="orders" *ngIf="statusAccept">
-        <div *ngFor="let order of data; let even = even;">
+    <!-- *ngIf="searchText ===''|| field" -->
+    <!-- *ngIf="searchText ===''|| field.product.title.toLowerCase().includes(searchText) -->
+    <div class="orders" *ngIf="status ==='accepted'">
+        <div *ngFor="let order of acceptorders.data; let even = even;">
           <div class="oneRow">
             <div class="rowOne">
               <div class="tableRow" *ngFor="let field of order.cartItems">
-                <div>{{field.product.title}}</div>
+                  <div>{{field.product.title}}</div>
                    <div>{{field.quantitiy}}</div>
                    <div>{{field.price}}</div>
                    <br>
@@ -63,8 +67,8 @@
             </div>    
           </div>
 
-          <div class="orders" *ngIf="statusPending">
-            <div *ngFor="let o of dataPending; let even = even;">
+          <div class="orders" *ngIf="status ==='pending'">
+            <div *ngFor="let o of pendingOrders.data; let even = even;">
               <div class="oneRow">
                 <div class="rowOne">
                   <div class="tableRow" *ngFor="let f of o.cartItems">
@@ -76,16 +80,23 @@
                 </div>
                    <div class="total">
                      <div>{{o.totalPrice}}</div>
-                     <div>{{o.creationDate.split("T")[0]}}</div>
-                     <div><i class="bi bi-check-circle accepted"></i></div>
-                   </div>
+                     <div>{{o.creationDate.split("T")[0]}}</div>                     
+                     <div>
+                      <i class="bi bi-hourglass-split pending"></i>
+                    </div>
+                    <i class="bi bi-trash3 trash" (click)="deleteOrder($event,o._id)"></i>
+                  </div>
               </div>
                   <hr>
                 </div>
-          </div>
+              </div>
+              <!-- <div *ngIf="!pendingOrders">
+                <img src="assets/empty_item.svg">
+                <div>No orders to display</div>
+              </div> -->
 
-          <div class="orders" *ngIf="statusReject">
-            <div *ngFor="let d of dataReject; let even = even;">
+          <div class="orders" *ngIf="status==='rejected'">
+            <div *ngFor="let d of rejectOrders.data; let even = even;">
               <div class="oneRow">
                 <div class="rowOne">
                   <div class="tableRow" *ngFor="let c of d.cartItems">
@@ -98,7 +109,7 @@
                    <div class="total">
                      <div>{{d.totalPrice}}</div>
                      <div>{{d.creationDate.split("T")[0]}}</div>
-                     <div><i class="bi bi-check-circle accepted"></i></div>
+                     <div><i class="bi bi-x-circle rejected"></i></div>
                    </div>
               </div>
                   <hr>

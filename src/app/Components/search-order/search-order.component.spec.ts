@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { SearchOrderComponent } from './search-order.component';
+
+describe('SearchOrderComponent', () => {
+  let component: SearchOrderComponent;
+  let fixture: ComponentFixture<SearchOrderComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ SearchOrderComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(SearchOrderComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

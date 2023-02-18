@@ -24,6 +24,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { CartComponent } from './Components/cart/cart.component';
+import { SearchOrderComponent } from './Components/search-order/search-order.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CartComponent } from './Components/cart/cart.component';
     SideOrderComponent,
     ProductDetailsComponent,
     CartComponent,
+    SearchOrderComponent,
   ],
   imports: [
     BrowserModule,

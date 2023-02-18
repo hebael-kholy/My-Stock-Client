@@ -150,13 +150,14 @@ h5{
 }
 select{
     background-color: white;
-    width: 120px;
-    text-align: center;
-    border-radius: 5px;
-    border-color: #c057f7;
-    font-weight: 600;
-    padding: 1px 0;
-    font-size: 15px;
+width: 170px;
+text-align: center;
+border-radius: 5px;
+border-color: #c057f7;
+font-weight: 600;
+padding: 3px 0;
+font-size: 16px;
+letter-spacing: 1px;
 }
 input[type="search"]{
     border-color: #c057f7;
@@ -183,12 +184,25 @@ i.accepted{
     color: #05d505;
     font-size: 20px;
 }
+i.rejected{
+    color: #9c0303;
+    font-size: 20px;
+}
+i.pending{
+    font-size: 20px;
+}
+i.trash{
+    color: #9c0303;
+    font-size: 20px;
+    cursor: pointer; 
+}
+
 .total{
     display: flex;
     width: 40%;
 }
 .total>div{
-    width: 31%;
+    width: 30%;
     text-align: center;
     font-weight: 600;
 }
@@ -221,10 +235,13 @@ i.accepted{
     width: 40%;
 }
 .items>div{
-    width: 31%;
+    width: 30%;
     text-align: center;
     font-size: 18px;
     font-weight: 700;
+}
+div.trash{
+    width: fit-content;
 }
 @media (max-width: 580px){
     .title{

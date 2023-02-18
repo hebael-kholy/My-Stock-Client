@@ -38,6 +38,7 @@ export class UserService {
   //user orders
   orderUrl= "https://ecommerceiti-heba.onrender.com/order/user";
   // cancelUrl = "https://ecommerceiti-heba.onrender.com/order/63ebd5ba9ac56a432b293996/cancle"
+  deleteOrderUrl = "https://ecommerceiti-heba.onrender.com/order";
   getAccept(id:any){
     return this.myUser.get(`${this.orderUrl}/${id}?status=accepted`);
   }
@@ -46,5 +47,8 @@ export class UserService {
   }
   getReject(id:any){
     return this.myUser.get(`${this.orderUrl}/${id}?status=rejected`);
+  }
+  deleteOrder(id:any,body:any){
+    return this.myUser.put(`${this.deleteOrderUrl}/${id}/cancle`,body);
   }
 }
