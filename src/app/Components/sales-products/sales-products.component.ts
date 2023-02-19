@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { faStar, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from './../../Services/products/products.service';
+import { FilterPipe } from 'src/app/Pipes/filter.pipe';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
@@ -12,6 +13,7 @@ export class SalesProductsComponent {
   icon = faStar;
   iconCart = faCartShopping;
   products: any[] = [];
+  productsWithSale:any[] =[];
 
   isLoading = false;
 
@@ -26,9 +28,24 @@ export class SalesProductsComponent {
     this.myService.getAllProducts().subscribe((data: any) => {
       console.log(data);
       this.isLoading = false;
-      this.products = data;
+      this.products = data.data;
+      this.productsWithSale= this.products.filter((a:any)=>{
+        console.log(a);
+        console.log(a.isSale);
+        if(a.isSale === true){
+          return a;
+        }
+      })
+    
     });
   }
+  
+
+
+
+
+  
+
 
   customOptions: OwlOptions = {
     loop: true,

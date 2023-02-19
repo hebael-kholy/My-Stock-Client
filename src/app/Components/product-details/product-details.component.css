@@ -131,3 +131,9 @@ body {
   background-color: white !important;
   color: #c057f7;
 }
+
+.heart i .fafa-heart-o:hover{
+  color: black;
+  /* background-color: black; */
+
+}

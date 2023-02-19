@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faCartShopping, faStar } from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from 'src/app/Services/products/products.service';
-
+import { ActivatedRoute } from '@angular/router';
+import { FilterPipe } from 'src/app/Pipes/filter.pipe';
 @Component({
   selector: 'app-all-products',
   templateUrl: './all-products.component.html',
@@ -13,20 +14,22 @@ export class AllProductsComponent implements OnInit {
   icon = faStar;
   iconCart = faCartShopping;
   products: any[] = [];
-  enterSearchValue: string = '';
-  enter: string = '';
+  categoryId:any;
+  searchKey:string ='';
+  filterCategory:any;
 
-  ChangeCase() {
-    this.enterSearchValue = this.enter.toLocaleLowerCase();
-    // console.log(this.enterSearchValue);
-  }
 
   isLoading = false;
 
-  constructor(public myService: ProductsService) {}
+ 
+
+  constructor(public myService: ProductsService, public route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getProducts();
+  
+   
+
   }
 
   getProducts() {
@@ -35,7 +38,20 @@ export class AllProductsComponent implements OnInit {
       console.log(data);
       this.isLoading = false;
       this.products = data.data;
+      this.filterCategory = data.data;
       this.totalRecords = data.length;
-    });
+    })
+  }
+  filter(category:string){
+    this.filterCategory = this.products.filter((a:any)=>{
+      console.log(a);
+      console.log(a.category.name);
+      if(a.category.name === category || category == ''){
+        return a;
+      }
+    })
+
+
+
   }
 }

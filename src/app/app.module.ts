@@ -25,6 +25,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { CartComponent } from './Components/cart/cart.component';
+import { FilterPipe } from './Pipes/filter.pipe';
+import { WishlistComponent } from './Components/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { CartComponent } from './Components/cart/cart.component';
     SideOrderComponent,
     ProductDetailsComponent,
     CartComponent,
+    FilterPipe,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,

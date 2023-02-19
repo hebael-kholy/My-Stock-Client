@@ -1,7 +1,8 @@
 <!-- Search Bar -->
 <div class="form-group has-search">
   <span class="fa fa-search form-control-feedback"></span>
-  <input type="text" class="form-control" [(ngModel)]="enter" (input)="ChangeCase()" placeholder="Search Products...">
+  <input type="text" class="form-control" [(ngModel)]="searchKey" placeholder="Search Products...">
+  <!-- <input type="text" class="form-control" [(ngModel)]="enter" (input)="ChangeCase()" placeholder="Search Products..."> -->
 </div>
 
 <!-- Collection -->
@@ -13,27 +14,27 @@
     </div>
     <ul class=" nav nav-tabs d-flex justify-content-center border-0 collection-tabs">
       <li class=" nav-item">
-        <a class="btn m-3 active" data-bs-toggle="tab" href="#all">All</a>
+        <a class="btn m-3 active" (click)= "filter('')" data-bs-toggle="tab" >All</a>
       </li>
       <li class="nav-item">
-        <a class="btn m-3" data-bs-toggle="tab" href="#bestSellers">Best Sellers</a>
+        <a class="btn m-3" (click)= "filter('Candles')"  data-bs-toggle="tab" >Candles</a>
       </li>
       <li class="nav-item">
-        <a class="btn m-3" data-bs-toggle="tab" href="#featured">Featured</a>
+        <a class="btn m-3" (click)= "filter('Croshet')"  data-bs-toggle="tab">Croshet</a>
       </li>
       <li class="nav-item">
-        <a class="btn m-3" data-bs-toggle="tab" href="#newArrival">New Arrival</a>
+        <a  class="btn m-3" (click)= "filter('Accessories')"  data-bs-toggle="tab" >Accessories</a>
       </li>
     </ul>
     <div class="text-center">
       <img *ngIf="isLoading" src="assets/Spinner-1s-200px.svg" alt="">
     </div>
     <div class="tab-content">
-      <div class="tab-pane active mt-4 gx-0 gy-3 p-2" id="all">
+      <div class="tab-pane active mt-4 gx-0 gy-3 p-2" >
         <div class="row">
-          <div class="col-md-6 col-lg-4 col-xl-3 mb-3" *ngFor="let product of products | paginate:{ id:'list_pagination',
+          <div class="col-md-6 col-lg-4 col-xl-3 mb-3" *ngFor="let product of filterCategory | filter :searchKey: 'title' | paginate:{ id:'list_pagination',
         itemsPerPage:10 ,currentPage: page, totalItems: totalRecords}">
-            <div *ngIf="enterSearchValue === ''  || product.title.toLowerCase().includes(enterSearchValue)">
+            <!-- <div *ngIf="enterSearchValue === ''  || product.title.toLowerCase().includes(enterSearchValue)"> -->
               <div class="collection-img position-relative overflow-hidden">
                 <img src="{{product.image}}" alt="" width="200" height="300" class="w-100">
               </div>
@@ -52,14 +53,18 @@
                   <a routerLink="/products/{{product._id}}" class="btn text-uppercase mt-3">Details</a>
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
           </div>
         </div>
+      </div>
+
+
+ 
       </div>
       <div class="text-center">
         <pagination-controls id="list_pagination" (pageChange)="page = $event" previousLabel="&lsaquo;"
           nextLabel="&rsaquo;" class="my-pagination"></pagination-controls>
       </div>
-    </div>
+    
   </div>
 </section>
