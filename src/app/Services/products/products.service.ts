@@ -8,21 +8,31 @@ import { CartItem, WihlistItem } from 'src/app/Components/product-details/produc
 export class ProductsService {
   constructor(public myClient: HttpClient) {}
 
+  getSalesProducts() {
+    return this.myClient.get(
+      'https://ecommerceiti-heba.onrender.com/product/products/sale'
+    );
+  }
+
   getAllProducts() {
     return this.myClient.get('https://ecommerceiti-heba.onrender.com/product?limit=100');
   }
 
   getProductDetails(id: any) {
+
     return this.myClient.get(`https://ecommerceiti-heba.onrender.com/product/get/${id}`);
   }
 
   getproductsByCategory(id:any){
     return this.myClient.get(`https://ecommerceiti-heba.onrender.com/category/${id}/product`);
+
   }
 
-  addtocart(id:any, data:CartItem){
-    return this.myClient.post(`https://ecommerceiti-heba.onrender.com/cart/${id}`,data);
-
+  addtocart(id: any, data: CartItem) {
+    return this.myClient.post(
+      `https://ecommerceiti-heba.onrender.com/cart/${id}`,
+      data
+    );
   }
   addtoWishlist(id:any, data:WihlistItem){
     return this.myClient.post(`https://ecommerceiti-heba.onrender.com/wishlist/${id}`,data);

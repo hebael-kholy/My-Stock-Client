@@ -24,9 +24,11 @@
           <a class="nav-link rounded" routerLink="/products" routerLinkActive="active">Products</a>
         </li>
         <li class="nav-item m-3">
+        
           <a class="nav-link rounded position-relative excluded" routerLink="/getCart" routerLinkActive="active"><fa-icon
               [icon]="icon"></fa-icon>Cart
             <span class="position-absolute top-0 start-100 translate-middle badge">{{totalitems}}</span>
+
           </a>
         </li>
         <li class="nav-item m-3">
@@ -46,8 +48,8 @@
         <li class="nav-item m-3" *ngIf="authService.isAuthenticated || loginStatus">
           <div>
             <button [matMenuTriggerFor]="menu" class="border-0 btn excluded bg-light p-0 m-0">
-              <img src="assets/profile.jpg" alt="" width="50" class="p-2">
-              User Name
+              <img src="{{image}}" alt="user" width="40" height="45" class="user-image">
+              <span style="text-transform: capitalize;">&nbsp;&nbsp;{{username}}</span>
               <mat-icon>keyboard_arrow_down</mat-icon>
             </button>
             <mat-menu #menu="matMenu">

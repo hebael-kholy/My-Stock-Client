@@ -20,14 +20,15 @@ export class SalesProductsComponent {
   constructor(public myService: ProductsService) {}
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getSalesProduct();
   }
 
-  getProducts() {
+  getSalesProduct() {
     this.isLoading = true;
-    this.myService.getAllProducts().subscribe((data: any) => {
+    this.myService.getSalesProducts().subscribe((data: any) => {
       console.log(data);
       this.isLoading = false;
+
       this.products = data.data;
       this.productsWithSale= this.products.filter((a:any)=>{
         console.log(a);
@@ -37,6 +38,7 @@ export class SalesProductsComponent {
         }
       })
     
+
     });
   }
   
@@ -70,9 +72,6 @@ export class SalesProductsComponent {
       },
       760: {
         items: 3,
-      },
-      1000: {
-        items: 4,
       },
     },
     nav: true,

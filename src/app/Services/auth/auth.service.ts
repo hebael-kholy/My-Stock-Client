@@ -28,13 +28,20 @@ export class LoginService {
 
   logOut() {
     this.isAuthenticated = false;
-    localStorage.removeItem('token ');
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('name');
+    localStorage.removeItem('mail');
+    localStorage.removeItem('password');
+    localStorage.removeItem('gender');
+    localStorage.removeItem('image');
+    localStorage.removeItem('user');
     location.reload();
     this.router.navigate(['']);
   }
 
   checkLoginStatus() {
-    return localStorage.getItem('token ');
+    return localStorage.getItem('token');
   }
 
   // isLogged() {

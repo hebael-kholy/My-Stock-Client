@@ -28,3 +28,6 @@
 .nav-menu ul li:hover a:after {
   transform: scale(1);
 }
+.user-image {
+  border-radius: 50%;
+}
