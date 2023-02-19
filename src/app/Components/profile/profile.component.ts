@@ -20,9 +20,11 @@ export class ProfileComponent implements OnInit {
   isEditName = false;
   isEditMail = false;
   isEditGender = false;
+  isEditPassword = false;
   File: any;
   imgText = 'Select Image';
   isLoading = false;
+  password = '***********************';
 
   form = new FormGroup({
     username: new FormControl('', [
@@ -77,18 +79,26 @@ export class ProfileComponent implements OnInit {
     this.isEditName = true;
     this.isEditMail = false;
     this.isEditGender = false;
+    this.isEditPassword = false;
   }
   EditMail(item: any) {
     this.isEditMail = true;
     this.isEditName = false;
     this.isEditGender = false;
+    this.isEditPassword = false;
   }
   EditGender() {
     this.isEditGender = true;
     this.isEditMail = false;
     this.isEditName = false;
+    this.isEditPassword = false;
   }
-
+  EditPassword(){
+    this.isEditPassword = true;
+    this.isEditGender = false;
+    this.isEditMail = false;
+    this.isEditName = false; 
+  }
   // drop down box to select
   onSelected(value: string): void {
     this.gender = value;
@@ -134,8 +144,8 @@ export class ProfileComponent implements OnInit {
   //  this.myService.updateUserImage(this.idUser,user).subscribe();
 
   // update user
-  Update(name: any, email: any, gender: any) {
-    let user = { name, email, gender };
+  Update(name: any, email: any,password:any, gender: any) {
+    let user = { name, email, password, gender };
 
     console.log(user);
     if (this.form.status === 'VALID') {

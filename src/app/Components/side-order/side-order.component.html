@@ -47,7 +47,7 @@
     <!-- *ngIf="searchText ===''|| field" -->
     <!-- *ngIf="searchText ===''|| field.product.title.toLowerCase().includes(searchText) -->
     <div class="orders" *ngIf="status ==='accepted'">
-        <div *ngFor="let order of acceptorders.data; let even = even;">
+        <div *ngFor="let order of acceptorders.data |paginate:{itemsPerPage:6, currentPage:p}" >
           <div class="oneRow">
             <div class="rowOne">
               <div class="tableRow" *ngFor="let field of order.cartItems">
@@ -65,10 +65,15 @@
           </div>
               <hr>
             </div>    
+            <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
+            <div class="emptyOrders" *ngIf="acceptorders.data.length == 0">
+              <img src="assets/empty_item.svg">
+              <div>No orders to display</div>
+            </div> 
           </div>
 
           <div class="orders" *ngIf="status ==='pending'">
-            <div *ngFor="let o of pendingOrders.data; let even = even;">
+            <div *ngFor="let o of pendingOrders.data|paginate:{itemsPerPage:6, currentPage:p2}">
               <div class="oneRow">
                 <div class="rowOne">
                   <div class="tableRow" *ngFor="let f of o.cartItems">
@@ -89,14 +94,18 @@
               </div>
                   <hr>
                 </div>
+            <pagination-controls (pageChange)="p2 = $event" class="float-right"></pagination-controls>
+                <div class="text-center" *ngIf="deleteLoading">
+                  <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
               </div>
-              <!-- <div *ngIf="!pendingOrders">
+              <div class="emptyOrders" *ngIf="pendingOrders.data.length == 0">
                 <img src="assets/empty_item.svg">
                 <div>No orders to display</div>
-              </div> -->
+              </div>
+              </div>
 
           <div class="orders" *ngIf="status==='rejected'">
-            <div *ngFor="let d of rejectOrders.data; let even = even;">
+            <div *ngFor="let d of rejectOrders.data|paginate:{itemsPerPage:6, currentPage:p3}">
               <div class="oneRow">
                 <div class="rowOne">
                   <div class="tableRow" *ngFor="let c of d.cartItems">
@@ -113,7 +122,12 @@
                    </div>
               </div>
                   <hr>
-                </div>    
+                </div>   
+            <pagination-controls (pageChange)="p3 = $event" class="float-right"></pagination-controls>
+                <div class="emptyOrders" *ngIf="rejectOrders.data.length == 0">
+                  <img src="assets/empty_item.svg">
+                  <div>No orders to display</div>
+                </div> 
           </div>
            
     <div class="text-center" *ngIf="isloading">

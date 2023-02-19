@@ -58,6 +58,29 @@
                 </td>
             </tr>
             <tr>
+                <th>Password</th>
+                <td>
+                    <div *ngIf="isEditPassword">
+                        <input type="password" class="editInput" [(ngModel)]="password" id="password">
+                        <!-- <div class="alert alert-danger" role="alert" *ngIf="!mailValid" >
+                            <div>
+                                {{mailError}}
+                            </div>
+                            <div>
+                                <i class="bi bi-exclamation-circle"></i> 
+                            </div>
+                          </div> -->
+                          
+                    </div>
+                    <div *ngIf="!isEditPassword" class="data">
+                        {{password}}
+                    </div>
+                </td> 
+                <td class="editIcon"> 
+                        <i class="bi bi-pencil-fill" (click)="EditPassword()"></i>
+                </td>
+            </tr>
+            <tr>
                 <th>Gender</th>
                 <td>
                     <div *ngIf="isEditGender" class="data">
@@ -92,7 +115,7 @@
                 </td>
             </tr>
         </table>
-        <input type="submit" value="Save settings" (click)="Update(username,mail,gender)">
+        <input type="submit" value="Save settings" (click)="Update(username,mail,password,gender)">
     <div class="text-center" *ngIf="isLoading">
         <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
     </div>

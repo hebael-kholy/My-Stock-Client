@@ -5,7 +5,7 @@
 }
 .sideNavbar{
     width: 22%;
-    height: 100vh;
+    height: 110vh;
 }
 .userImg img{
     width: 120px;
@@ -46,43 +46,6 @@ li:hover{
 }
 
 /* end nav */
-/* cardsOrders */
-/* .card-img-top{
-    width: 170px;
-    height: 200px;
-}
-.cardOrders{
-    padding: 30px 30px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 35px;
-}
-.card{
-    box-shadow: 0px 0px 4px #c4c4c4;
-}
-h5{
-    font-size: 18px;
-    font-weight: 600;
-}
-.btnDel{
-    display: flex;
-    justify-content: flex-end;
-}
-.btnDel input{
-    background-color: white;
-  color: rgb(175, 16, 16);
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 8px;
-}
-.btnDel input:hover{
-    background-color: rgb(175, 16, 16);
-    color: white;
-    cursor: pointer;
-}
-.card-body{
-    padding: 10px;
-} */
 
 /* responsive design */
 
@@ -116,17 +79,6 @@ h5{
         font-size: 19px;
         padding-left: 35px;
       }
-      /* .cardOrders{
-        gap: 5px;
-        justify-content: center;
-    }
-    .card{
-        margin-bottom: 5px;
-    }
-    .card-img-top{
-        width: 190px;
-        height: 200px;
-    } */
 }
 
 /*nav orders*/
@@ -243,6 +195,28 @@ i.trash{
 div.trash{
     width: fit-content;
 }
+.emptyOrders{
+    width: fit-content;
+    margin: 50px auto;
+}
+.emptyOrders img{
+    width: 300px;
+}
+.emptyOrders div{
+    text-align: center;
+font-weight: 700;
+font-size: 25px;
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+pagination-controls{
+    position: absolute;
+    right: 7%;
+    margin-top: 10px;
+  }
+  pagination-controls /deep/ .ngx-pagination .current{
+    background: #c057f7;
+  }
 @media (max-width: 580px){
     .title{
         font-size: 18px;
