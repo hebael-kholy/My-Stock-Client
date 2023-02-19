@@ -1,0 +1,54 @@
+<div class="container-fluid" *ngIf="items.length !=0 , else trueblock">
+    <div class="full">
+    <div class="container"  *ngFor="let item of items" >
+      <div class="contentI" >
+      <img src="{{item.product.image}}" alt="">
+      <div class="content">
+        <p class="name">{{item.product.title}}</p>
+        <p class="txt">{{item.product.description}}</p>
+        <p>Sold By <strong>Crafts</strong></p>
+        <button class="remove-button" href = "#" (click) = "removeitem(item)"><i class="bi bi-trash3-fill"></i>Remove</button>
+      </div>
+    </div>
+      <div class="price">
+        <p class="priceLeft">EGP<strong>{{item.price}}</strong> </p>
+        <select (change)= "updateItemQuantity(item)" [(ngModel)]="value" [(ngModel)] = "item.quantitiy">         
+          <option >1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="btnClear">
+      <a routerLink="/products" class="conShop">Continue Shopping</a>
+      <button class="clear" (click) = "clearcart()">Clear All</button>
+    </div>
+    </div>
+    
+    
+    <div class="rightCon">
+    <div class="con-txt">
+      <p class="total"><strong>Total</strong></p>
+      <p class="total">EGP<strong>{{totalPrice}}</strong></p>
+    </div>
+    <a class="checkout" (click) = "AddOrder()">Checkout</a>
+    
+    </div>
+    </div>
+
+    <ng-template #trueblock>
+      <div class="container">
+        <div class="text-center">
+          <div class="center">
+              <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+              <h4>Your cart is empty!</h4>
+              <h6>Add item to it now</h6>
+              <button routerLink="/products" class="btn btn-primary">Shop Now</button>
+          </div>
+
+      </div>
+      </div>
+    </ng-template>
