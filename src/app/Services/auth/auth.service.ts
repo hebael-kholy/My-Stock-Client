@@ -44,14 +44,11 @@ export class LoginService {
     return localStorage.getItem('token');
   }
 
-  // isLogged() {
-  //   return localStorage.getItem('token') != null;
-  // }
-  // IsLoggedOut() {
-  //   localStorage.removeItem('token');
-  //   localStorage.removeItem('dataUser');
-  // }
-  // getToken() {
-  //   return localStorage.getItem('token') || '';
-  // }
+ resetPassword(data: any){
+  return this.httpClient.post("https://ecommerceiti-heba.onrender.com/forgetpass",data);
+ }
+
+ veryfyCode(data: any){
+  return this.httpClient.post("https://ecommerceiti-heba.onrender.com/forgetpass/verify",data);
+ }
 }

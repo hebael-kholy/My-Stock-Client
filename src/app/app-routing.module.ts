@@ -11,6 +11,8 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import { CartComponent } from './Components/cart/cart.component';
 import { ProfileGuard } from './Guards/profile.guard';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { VerifyCodeComponent } from './Components/verify-code/verify-code.component';
 
 // import { ErrorComponent } from './Components/error/error.component';
 
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'profile/settings', component: ProfileComponent },
   { path: 'profile/orders', component: SideOrderComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'resetPass', component: ResetPasswordComponent },
+  { path: 'verifyCode', component: VerifyCodeComponent },
   { path: 'products', component: AllProductsComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'register', component: RegisterComponent },
