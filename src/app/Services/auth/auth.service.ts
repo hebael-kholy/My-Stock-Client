@@ -51,4 +51,7 @@ export class LoginService {
  veryfyCode(data: any){
   return this.httpClient.post("https://ecommerceiti-heba.onrender.com/forgetpass/verify",data);
  }
+ changePassword(data: any){
+  return this.httpClient.post("https://ecommerceiti-heba.onrender.com/forgetpass",data);
+ }
 }

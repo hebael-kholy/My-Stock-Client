@@ -33,7 +33,12 @@ export class ResetPasswordComponent implements OnInit{
 
   onSubmit(){
     this.services.resetPassword(this.resetForm).subscribe(res=>{
-      console.log(res);
+      // localStorage.setItem('email', JSON.stringify(this.resetForm.email));
+      console.log(typeof(this.resetForm.email));
+      localStorage.setItem('email',JSON.stringify( this.resetForm.email));
+      let emaill = localStorage.getItem('email');
+      console.log(emaill);
+
       this.router.navigate(['/verifyCode']);
     },err=>{console.log(err); Swal.fire("email wrong","","error")})
   }

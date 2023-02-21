@@ -13,6 +13,7 @@ import { ProfileGuard } from './Guards/profile.guard';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { VerifyCodeComponent } from './Components/verify-code/verify-code.component';
+import { NewPasswordComponent } from './Components/new-password/new-password.component';
 
 // import { ErrorComponent } from './Components/error/error.component';
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'resetPass', component: ResetPasswordComponent },
   { path: 'verifyCode', component: VerifyCodeComponent },
+  { path: 'newPassword', component: NewPasswordComponent },
   { path: 'products', component: AllProductsComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'register', component: RegisterComponent },

@@ -29,6 +29,7 @@ import { WishlistComponent } from './Components/wishlist/wishlist.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { VerifyCodeComponent } from './Components/verify-code/verify-code.component';
 import { NgOtpInputModule } from  'ng-otp-input';
+import { NewPasswordComponent } from './Components/new-password/new-password.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { NgOtpInputModule } from  'ng-otp-input';
     WishlistComponent,
     ResetPasswordComponent,
     VerifyCodeComponent,
+    NewPasswordComponent,
   ],
   imports: [
     BrowserModule,
