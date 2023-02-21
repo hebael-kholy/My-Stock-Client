@@ -65,7 +65,7 @@
           </div>
               <hr>
             </div>    
-            <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
+            <pagination-controls *ngIf="acceptorders.data" (pageChange)="p = $event" class="float-right"></pagination-controls>
             <div class="emptyOrders" *ngIf="acceptorders.data.length == 0">
               <img src="assets/empty_item.svg">
               <div>No orders to display</div>
@@ -94,7 +94,7 @@
               </div>
                   <hr>
                 </div>
-            <pagination-controls (pageChange)="p2 = $event" class="float-right"></pagination-controls>
+            <pagination-controls *ngIf="pendingOrders.data" (pageChange)="p2 = $event" class="float-right"></pagination-controls>
                 <div class="text-center" *ngIf="deleteLoading">
                   <img src="assets/Spinner-1s-200px.svg" alt="Loading ...">
               </div>
@@ -123,7 +123,7 @@
               </div>
                   <hr>
                 </div>   
-            <pagination-controls (pageChange)="p3 = $event" class="float-right"></pagination-controls>
+            <pagination-controls *ngIf="rejectOrders.data" (pageChange)="p3 = $event" class="float-right"></pagination-controls>
                 <div class="emptyOrders" *ngIf="rejectOrders.data.length == 0">
                   <img src="assets/empty_item.svg">
                   <div>No orders to display</div>
