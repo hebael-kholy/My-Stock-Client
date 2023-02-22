@@ -31,15 +31,22 @@ export class ResetPasswordComponent implements OnInit{
     email: '',
   };
 
+  isLoading = false;
   onSubmit(){
+  this.isLoading = true;
     this.services.resetPassword(this.resetForm).subscribe(res=>{
       // localStorage.setItem('email', JSON.stringify(this.resetForm.email));
+    this.isLoading = false;
       console.log(typeof(this.resetForm.email));
-      localStorage.setItem('email',JSON.stringify( this.resetForm.email));
+      localStorage.setItem('email',JSON.stringify(this.resetForm.email));
       let emaill = localStorage.getItem('email');
       console.log(emaill);
 
       this.router.navigate(['/verifyCode']);
-    },err=>{console.log(err); Swal.fire("email wrong","","error")})
+    },err=>{
+      this.isLoading = false;
+      console.log(err);
+      Swal.fire("email wrong","","error");
+  })
   }
 }

@@ -59,3 +59,20 @@ img {
   border-color: #2e9afe !important;
   border-radius: 13px !important;
 }
+.overlay{
+  position: fixed;
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2;
+}
+.overlay img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}

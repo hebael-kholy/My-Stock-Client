@@ -54,26 +54,15 @@ export class VerifyCodeComponent implements OnInit{
     this.resetCode = event;
 
   }
-  // setVal(val: any) {
-  //   this.ngOtpInputRef.setValue(val);
-  // }
+  isLoading = false;
 
   verify(){
-  //  console.log(this.ngOtpInputRef.setValue);
-  //  const s = this.ngOtpInputRef.setValue(event);
-  //  console.log(s);
-    // console.log(this.arr.length-1);
-    // console.log(this.ngOtpInputRef.setValue("623739"));
-    // console.log(this.ngOtpInputRef.first.currentVal);
-
-    // let s = this.ngOtpInputRef.first.currentVal;
+  this.isLoading = true;
     this.services.veryfyCode({code: this.ngOtpInputRef.first.currentVal}).subscribe(res=>{
-      // console.log(this.ngOtpInputRef.first.currentVal);
+    this.isLoading = false;
       console.log(res);
       this.router.navigate(['/newPassword']);
     },err=>{console.log(err); Swal.fire("Invalid Rest Code or Expired","","error")})
   }
-  // setVal(val) {
-  //   this.ngOtpInputRef.setValue(val);
-  // }
+
 }

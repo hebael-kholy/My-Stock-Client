@@ -52,6 +52,6 @@ export class LoginService {
   return this.httpClient.post("https://ecommerceiti-heba.onrender.com/forgetpass/verify",data);
  }
  changePassword(data: any){
-  return this.httpClient.post("https://ecommerceiti-heba.onrender.com/forgetpass",data);
+  return this.httpClient.put("https://ecommerceiti-heba.onrender.com/forgetpass",data);
  }
 }

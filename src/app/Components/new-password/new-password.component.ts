@@ -22,16 +22,19 @@ export class NewPasswordComponent implements OnInit {
   // user = localStorage.getItem('email');
   // useremail = this.user && JSON.parse(this.user).email;
   resetForm: any = {
-    email: localStorage.getItem(JSON.parse('email')),
+    email: localStorage.getItem('email'),
     newpassword: '',
   };
 
-
+  isLoading = false;
   onSubmit(){
+    this.isLoading = true;
     console.log(this.resetForm);
     this.services.changePassword({email:'hellanaasaad@gmail.com',
     newpassword:"lilo123"}).subscribe(res=>{
+      this.isLoading = false;
       console.log(res);
+      Swal.fire("Password Changed Successfullu","please login","success");
       this.router.navigate(['/login']);
     },err=>{console.log(err); Swal.fire("email wrong","","error")})
   }
