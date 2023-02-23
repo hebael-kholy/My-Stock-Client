@@ -61,11 +61,11 @@
                 <th>Password</th>
                 <td>
                     <div *ngIf="isEditPassword">
-                        <input type="password" class="editInput" [(ngModel)]="password" id="password">
+                        <input type="password" class="editInput" [(ngModel)]="password" #pass placeholder="change password" formControlName="password">
                         <!-- <div class="alert alert-danger" role="alert" *ngIf="!mailValid" >
                             <div>
                                 {{mailError}}
-                            </div>
+                            </div> 
                             <div>
                                 <i class="bi bi-exclamation-circle"></i> 
                             </div>
@@ -73,7 +73,7 @@
                           
                     </div>
                     <div *ngIf="!isEditPassword" class="data">
-                        {{password}}
+                       **********
                     </div>
                 </td> 
                 <td class="editIcon"> 

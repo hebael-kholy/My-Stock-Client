@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
   File: any;
   imgText = 'Select Image';
   isLoading = false;
-  password = '***********************';
+  password :any;
 
   form = new FormGroup({
     username: new FormControl('', [
@@ -32,6 +32,9 @@ export class ProfileComponent implements OnInit {
       Validators.minLength(3),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.minLength(3),
+    ]),
   });
 
   @Output() formEvent = new EventEmitter();
@@ -145,9 +148,16 @@ export class ProfileComponent implements OnInit {
 
   // update user
   Update(name: any, email: any,password:any, gender: any) {
-    let user = { name, email, password, gender };
-
-    console.log(user);
+    let user:any;
+    if(password){
+      user = { name, email,password,gender };
+       console.log(user);
+    }
+    else{
+       user = { name, email,gender };
+      console.log(user);
+    }
+     console.log("hi iam user");
     if (this.form.status === 'VALID') {
       this.formEvent.emit(this.form.value);
     } else {
