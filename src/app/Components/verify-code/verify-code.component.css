@@ -18,7 +18,7 @@
   text-align: center;
   display: flex;
   align-items: center;
-  background-color: #d8eafad2;
+  background-color: #fad8edd2;
 }
 img {
   height: auto;
@@ -28,24 +28,24 @@ img {
 .card {
   border: none;
   border-radius: 15px;
-  box-shadow: 0 3px 20px -3px #d5dbed;
+  box-shadow: 0 3px 20px -3px #fad8edd2;
 }
 
 .digit-otp {
   height: 60px !important;
   border-radius: 8px !important;
-  color: #2e9afe;
+  color: #b744f6;
 
   /* &::placeholder {
-            color: #2e9afe; */
+            color: ##b744f6; */
 }
 
 /* &:focus {
-            outline-color: #2e9afe;
-            border-color: #2e9afe; */
+            outline-color: ##b744f6;
+            border-color: ##b744f6; */
 
 .ng-touched {
-  border: 2px solid #2e9afe !important;
+  border: 2px solid #b744f6 !important;
 }
 
 .btn-light {
@@ -55,8 +55,8 @@ img {
 }
 
 .btn-primary {
-  background-color: #2e9afe !important;
-  border-color: #2e9afe !important;
+  background-color: #b744f6 !important;
+  border-color: #b744f6 !important;
   border-radius: 13px !important;
 }
 .overlay{
@@ -75,4 +75,14 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+}
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+.btnColor{
+  background-color: #b744f6;
 }

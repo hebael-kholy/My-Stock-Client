@@ -48,6 +48,7 @@ export class VerifyCodeComponent implements OnInit{
     if(this.otp.length == this.configOptions.length) {
       this.inputDigitLeft = "Let's go!";
       this.btnStatus = 'btn-primary';
+      // this.btnStatus = 'btnColor';
     }
     // this.arr.push(event);
     // console.log(this.arr);
@@ -62,7 +63,11 @@ export class VerifyCodeComponent implements OnInit{
     this.isLoading = false;
       console.log(res);
       this.router.navigate(['/newPassword']);
-    },err=>{console.log(err); Swal.fire("Invalid Rest Code or Expired","","error")})
+    },err=>{console.log(err);
+      Swal.fire("Invalid Rest Code or Expired","","error");
+      this.isLoading = false;
+
+    })
   }
 
 }
