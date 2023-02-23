@@ -121,6 +121,10 @@ body {
   color: white;
 }
 
+.btn-addcart .btn:active {
+  background-color: #c057f7;
+  color: white;
+}
 .btn-outline-dark {
   background-color: #c057f7;
   color: white;

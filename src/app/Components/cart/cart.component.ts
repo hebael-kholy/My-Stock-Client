@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/Services/cart/cart.service';
+import Swal from 'sweetalert2';
 import {
   CartItem,
   ProductDetailsComponent,
@@ -27,14 +28,17 @@ export class CartComponent implements OnInit {
   value: any;
   cartId: any;
   cartitems: any;
+  isloading = false;
 
   user = localStorage.getItem('user');
   userId = this.user && JSON.parse(this.user)._id;
 
   constructor(public route: ActivatedRoute, public myService: CartService) {}
   ngOnInit(): void {
+    this.isloading = true;
     this.myService.getCartitems(this.userId).subscribe((res: any) => {
       console.log(res);
+      this.isloading = false;
       this.data2 = res.data;
       this.items = res.data.cartItems;
       console.log(this.items);
@@ -110,5 +114,10 @@ export class CartComponent implements OnInit {
       .subscribe((res) => {
         console.log(res);
       });
+      this.items= [];
+      this.cartitems = localStorage.getItem('cartitems');
+      this.cartitems = 0;
+      localStorage.setItem('cartitems', this.cartitems);
+      Swal.fire("Your order has been Checkout","","success");
   }
 }

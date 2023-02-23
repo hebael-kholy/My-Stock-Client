@@ -7,9 +7,13 @@
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(0, 0, 0, 0.2);
     border-radius: .25rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+   
+
+    
 .center .btn {
     font-size: 14px !important;
     margin-top: 20px !important;
@@ -21,3 +25,22 @@ h4,
 h6 {
     font-weight: 400;
 }
+i{
+    color:red;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+td,th{
+    height:50px;
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.btn-shop{
+    background-color: #c057f7;
+    color:white;
+    box-shadow: 0 4px 8px 0 rgba(154, 41, 151, 0.2), 0 6px 20px 0 rgba(173, 60, 175, 0.19);
+    
+}
+

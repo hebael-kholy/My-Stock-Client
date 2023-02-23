@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { faCartShopping, faStar } from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from 'src/app/Services/products/products.service';
 import { ActivatedRoute } from '@angular/router';
@@ -17,9 +17,9 @@ export class AllProductsComponent implements OnInit {
   categoryId:any;
   searchKey:string ='';
   filterCategory:any;
-
-
+  showButton: boolean = false;
   isLoading = false;
+  isLoadingg = false;
 
  
 
@@ -53,5 +53,20 @@ export class AllProductsComponent implements OnInit {
 
 
 
+  }
+  onclick(){
+  
+    console.log("hala");
+     this.isLoadingg= true;
+     
+  }
+
+  clickk(){
+  
+    console.log("hala");
+    setInterval(()=>{
+
+    },1000)
+     this.isLoadingg= false;
   }
 }

@@ -83,3 +83,105 @@
 .my-pagination::ng-deep .ngx-pagination .current {
   background: #c057f7;
 }
+.card{
+  margin-right: 20px;
+  transition: all 0.3s;
+
+}
+
+.card:hover{
+
+  transform: scale(1.1);
+}
+
+section{
+
+  background-color: floralwhite;
+}
+
+.imageselect .imagebox {
+  position: relative
+}
+
+.imageselect .imagebox figure {
+  position: relative;
+  overflow: hidden
+}
+
+.imageselect .imagebox figcaption {
+  background: white;
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  padding: 20px;
+  -webkit-transform: translateY(140%);
+  -moz-transform: translateY(140%);
+  -ms-transform: translateY(140%);
+  -o-transform: translateY(140%);
+  transform: translateY(140%);
+  -moz-transition: -moz-transform 0.5s ease;
+  -o-transition: -o-transform 0.5s ease;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  -ms-transition: -ms-transform 0.5s ease;
+  transition: transform 0.5s ease
+}
+
+
+.imageselect .imagebox .caption-title {
+  margin-bottom: 0;
+  color: #052c3f;
+}
+
+
+.imageselect .imagebox .info i {
+  color: #052c3f;
+  cursor: pointer;
+}
+
+
+.imageselect .imagebox .info i:hover {
+  color: #85b0be;
+ 
+}
+
+.imageselect .imagebox:hover figcaption {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0)
+}
+
+.info{
+  font-size: 1.2em;
+  text-transform: uppercase;
+  float: right;
+  text-align: right;
+  line-height: 1;
+  display: block;
+  width:fit-content;
+  
+}
+
+.overlay{
+  position: fixed;
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2;
+}
+.overlay img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.card{
+  height: 100%; 
+}

@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatDialogModule} from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -57,6 +57,7 @@ import { WishlistComponent } from './Components/wishlist/wishlist.component';
     NgxPaginationModule,
     MatIconModule,
     MatMenuModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],
