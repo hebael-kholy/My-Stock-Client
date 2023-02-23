@@ -27,6 +27,7 @@
             <span class="alert text-danger ms-3" *ngIf="loginForm.controls['password'].hasError('minlength')">* Password
               Should not be less than 3 characters</span>
           </div>
+          <a routerLink="/resetPass" class="d-flex justify-content-end" style="color: #b744f6;">Forget Password?</a>
           <div class="text-center text-lg-start mt-4 pt-2">
             <button type="submit" class="btn btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"
               (click)="onLogin()" [disabled]="frm.invalid">Login</button>

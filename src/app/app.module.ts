@@ -26,6 +26,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { CartComponent } from './Components/cart/cart.component';
 import { FilterPipe } from './Pipes/filter.pipe';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { VerifyCodeComponent } from './Components/verify-code/verify-code.component';
+import { NgOtpInputModule } from  'ng-otp-input';
+import { NewPasswordComponent } from './Components/new-password/new-password.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +48,9 @@ import { WishlistComponent } from './Components/wishlist/wishlist.component';
     CartComponent,
     FilterPipe,
     WishlistComponent,
+    ResetPasswordComponent,
+    VerifyCodeComponent,
+    NewPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +64,7 @@ import { WishlistComponent } from './Components/wishlist/wishlist.component';
     NgxPaginationModule,
     MatIconModule,
     MatMenuModule,
+    NgOtpInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],
