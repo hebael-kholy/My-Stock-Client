@@ -1,0 +1,76 @@
+.text-primary {
+  color: #c057f7 !important;
+}
+.bg-primary {
+  background-color: #c057f7 !important;
+}
+.btn-primary {
+  background-color: #c057f7 !important;
+}
+/*Header*/
+
+#header {
+  background: url(/assets/handmade.jpg) top/cover no-repeat;
+}
+.shopBtn {
+  background-color: white;
+  color: black;
+  padding: 10px 28px;
+  border-radius: 25px;
+}
+.shopBtn:hover {
+  background-color: #c057f7;
+  color: white;
+}
+
+/*Title of any Section*/
+.title h2::before {
+  position: absolute;
+  content: "";
+  width: 7px;
+  height: 50px;
+  background-color: #c057f7;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Offers in Blog Section */
+#offers {
+  background: url(/assets/blog.jpg) center/cover no-repeat;
+}
+#offers .row {
+  min-height: 60vh;
+}
+.offers-content span {
+  font-size: 28px;
+}
+.offers-content h2 {
+  font-size: 60px;
+}
+
+/* Newsletter */
+#newsletter p {
+  max-width: 700px;
+}
+#newsletter .input-group {
+  max-width: 600px;
+}
+#newsletter .btn {
+  background-color: #c057f7;
+  color: white;
+}
+#newsletter .btn:hover {
+  background-color: black;
+}
+
+/* Footer */
+footer .brand {
+  letter-spacing: 2px;
+  font-family: Georgia, Times, "Times New Roman", serif;
+}
+.follow-us-list li a i {
+  font-size: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+}

@@ -1,0 +1,44 @@
+<ng-container>
+    <section>
+    <div class="container mt-3">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Pr.No</th>
+                            <th>Product Image</th>
+                            <th>Product Name</th>
+                            
+                            <th>Description</th>
+                            <th>Price</th>
+
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items; let i = index">
+                            <td>{{i+1}}</td>
+                            
+                            <td><img style="width: 200px ;height:200px; " src="{{item.image}} " alt=""></td>
+                            <td style="vertical-align: middle;">{{item.title}}</td>
+                            <td style="width: 25%;">{{item.description}}</td>
+                            <th style="width: 12%;">{{item.price}}</th>
+                            <td>
+                                <i  (click)="removeItem(item)" class="bi bi-trash"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"></td>
+                            <td><button routerLink="/products" class="btn-shop btn">Shop More</button></td>
+                           
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+</ng-container>
+

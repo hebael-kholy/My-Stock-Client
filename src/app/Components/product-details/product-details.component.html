@@ -1,0 +1,65 @@
+<div class="container mt-5 mb-5">
+  <div class="card">
+    <div class="row g-0">
+      <div class="col-md-6 border-end">
+        <div class="d-flex flex-column justify-content-center">
+          <div class="main_image">
+            <img src="{{product.data.image}}" id="main_product_image" width="350">
+          </div>
+          <div class="thumbnail_images">
+            <ul id="thumbnail">
+              <li><img src="{{product.data.image}}" width="70"></li>
+              <li><img src="{{product.data.image}}" width="70"></li>
+              <li><img src="{{product.data.image}}" width="70"></li>
+              <li><img src="{{product.data.image}}" width="70">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 right-side">
+          <div class="d-flex justify-content-between align-items-center">
+             <h3>{{product.data.title}}</h3> <span *ngIf = "!addedtowishlist" class="heart"><i (click) = "AddToWishlist()" class="fa fa-heart-o" aria-hidden="true"></i> </span> 
+             <span *ngIf = "addedtowishlist" class="heart"> <fa-icon [icon]="icon2"></fa-icon></span>
+          </div>
+          <div class="mt-2 pr-3 content">
+            <p>{{product.data.description}}</p>
+            <span class="fw-bold">Category : </span><span class="text-capitalize my-1">{{product.data.category.name}}</span>
+          </div>
+          <div class="fw-bold mt-2">
+            <h3>${{product.data.price}}</h3>
+          </div>
+          <div class="rating  mt-2">
+            <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+            <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+            <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+            <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+            <fa-icon [icon]="icon" class="text-primary"></fa-icon>
+            {{product.data.rating}}
+          </div>
+          <div class="mt-3">
+            <span class="fw-bold">Color</span>
+            <div class="colors">
+              <ul id="marker">
+                <li id="marker-1"></li>
+                <li id="marker-2"></li>
+                <li id="marker-3"></li>
+                <li id="marker-4"></li>
+                <li id="marker-5"></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="buttons d-flex flex-row mt-5 gap-3">
+            <button class=" btn btn-outline-dark text-uppercase">Buy Now</button>
+
+            <span class="btn-addcart">
+              <button class="btn text-uppercase " (click) = "add()"><fa-icon [icon]="iconCart"></fa-icon> Add to Cart</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
