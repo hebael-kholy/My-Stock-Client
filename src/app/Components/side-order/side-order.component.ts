@@ -31,7 +31,7 @@ export class SideOrderComponent implements OnInit {
       next: (res) => {
         this.user = res;
         console.log(this.user);
-        // console.log(this.user.data[0].gender);
+
       },
       error(err) {
         console.log(err);
@@ -91,12 +91,6 @@ export class SideOrderComponent implements OnInit {
   rejected(){
     this.status ='rejected';
   }
-// search 
-  // searchText:string = '';
-  // onSearchTextEntered(searchValue:string){
-  //   this.searchText = searchValue;
-  //   console.log(this.searchText);
-  // }
 
   // delete pending orders
   deleteOrder(event:any,id:any){

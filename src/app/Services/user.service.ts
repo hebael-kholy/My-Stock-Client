@@ -30,9 +30,7 @@ export class UserService {
     console.log(head);
     this.isUpdated = true;
 
-    return this.myUser.put(`${this.updateUrl}/${id}`, newUser, {
-      headers: head,
-    });
+    return this.myUser.put(`${this.updateUrl}/${id}`, newUser, {headers: head});
   }
 
   //user orders
