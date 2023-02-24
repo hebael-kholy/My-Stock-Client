@@ -30,8 +30,22 @@ export class UserService {
     console.log(head);
     this.isUpdated = true;
 
-    return this.myUser.put(`${this.updateUrl}/${id}`, newUser, {
-      headers: head,
-    });
+    return this.myUser.put(`${this.updateUrl}/${id}`, newUser, {headers: head});
+  }
+
+  //user orders
+  orderUrl= "https://ecommerceiti-heba.onrender.com/order/user";
+  deleteOrderUrl = "https://ecommerceiti-heba.onrender.com/order";
+  getAccept(id:any){
+    return this.myUser.get(`${this.orderUrl}/${id}?status=accepted`);
+  }
+  getPending(id:any){
+    return this.myUser.get(`${this.orderUrl}/${id}?status=pending`);
+  }
+  getReject(id:any){
+    return this.myUser.get(`${this.orderUrl}/${id}?status=rejected`);
+  }
+  deleteOrder(id:any,body:any){
+    return this.myUser.put(`${this.deleteOrderUrl}/${id}/cancle`,body);
   }
 }
