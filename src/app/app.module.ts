@@ -30,6 +30,8 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
 import { VerifyCodeComponent } from './Components/verify-code/verify-code.component';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { NewPasswordComponent } from './Components/new-password/new-password.component';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -62,10 +64,12 @@ import { NewPasswordComponent } from './Components/new-password/new-password.com
     BrowserAnimationsModule,
     HttpClientModule,
     NgxPaginationModule,
-    MatIconModule,
     MatMenuModule,
     MatDialogModule,
     NgOtpInputModule,
+    MatButtonModule,
+    MatIconModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

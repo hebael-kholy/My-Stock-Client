@@ -5,6 +5,7 @@ import { WishlistService } from 'src/app/Services/wishlist/wishlist.service';
 import { WishlistComponent } from '../wishlist/wishlist.component';
 import { ProductsService } from 'src/app/Services/products/products.service';
 
+
 import Swal from 'sweetalert2';
 import {
   CartItem,
@@ -13,16 +14,15 @@ import {
 
 
 
+
 export class Coupon{
   coupon!: string;
 }
+
 export class Order {
   shippingPrice!: number;
   taxPrice!: number;
 }
-
-
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -33,12 +33,14 @@ export class CartComponent implements OnInit {
   product: any;
   productId: number = 0;
   totalPrice: any;
+
   itemId: any;
   productTitle: any;
   data2: any;
   value: any;
   cartId: any;
   cartitems: any;
+
   isloading = true;
   coupon_value = "";
   Discountt:number =0;
@@ -59,6 +61,7 @@ export class CartComponent implements OnInit {
         this.cartId = res.data._id;
         console.log(`this is cart id ${this.cartId}`);
         this.totalPrice = res.data.totalCarPrice;
+
         this.totalAfterDiscount = this.totalPrice;
         this.newdisc = 0;
         console.log(this.totalPrice);
@@ -67,10 +70,10 @@ export class CartComponent implements OnInit {
     
       error: (err: any) => {
         console.log(err.error.message);
+
       },
     });
   }
-
 
   getCartTotal() {
     this.myService.getCartitems(this.userId).subscribe((res: any) => {
@@ -90,6 +93,7 @@ export class CartComponent implements OnInit {
       
       console.log(this.totalAfterDiscount);
       console.log(this.Discountt);
+
     });
   }
 
@@ -135,6 +139,7 @@ export class CartComponent implements OnInit {
 
         this.getCartTotal();
         
+
       });
   }
 
@@ -159,6 +164,7 @@ export class CartComponent implements OnInit {
     localStorage.setItem('cartitems', this.cartitems);
     Swal.fire('Your order has been Checkout', '', 'success');
   }
+
   apply(){
 
     let coupon :Coupon = {
@@ -184,4 +190,5 @@ export class CartComponent implements OnInit {
 
 
   
+
 }

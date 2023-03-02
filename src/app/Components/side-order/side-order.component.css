@@ -1,11 +1,15 @@
 
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 
 .profile{
     display: flex;
 }
 .sideNavbar{
     width: 22%;
-    height: 130vh;
+
+    height: 110vh;
+
 }
 .userImg img{
     width: 120px;
@@ -80,6 +84,9 @@ li:hover{
         padding-left: 35px;
       }
 }
+
+
+/*nav orders*/
 
 .conter{
     width: 78%;

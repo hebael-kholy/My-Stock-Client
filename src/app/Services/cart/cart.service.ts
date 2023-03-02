@@ -31,6 +31,7 @@ export class CartService {
   applycoupon(id:any , data:any){
     return this.myClient.put(`https://ecommerceiti-heba.onrender.com/users/${id}/cart/applycoupon`,data)
   }
+
   }
 
 

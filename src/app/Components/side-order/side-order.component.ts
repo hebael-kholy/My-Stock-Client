@@ -50,7 +50,7 @@ export class SideOrderComponent implements OnInit {
     this.myService.getAccept(this.idUser).subscribe({
       next:(res)=>{
         this.acceptorders = res;
-         console.log(this.acceptorders);
+         console.log(res);
         this.isloading = false;
         // console.log(this.data);
       },
@@ -62,7 +62,9 @@ export class SideOrderComponent implements OnInit {
     this.myService.getPending(this.idUser).subscribe({
       next:(res)=>{
         this.pendingOrders = res;
-        console.log(this.pendingOrders);
+
+        console.log(res);
+
        this.isloading = false;
        console.log("this data pending",this.pendingOrders);
       },
@@ -74,7 +76,8 @@ export class SideOrderComponent implements OnInit {
     this.myService.getReject(this.idUser).subscribe({
       next:(res)=>{
         this.rejectOrders = res;
-        console.log(this.rejectOrders);
+
+        console.log(res);
        this.isloading = false;
       //  console.log(this.dataReject);
       },
@@ -87,7 +90,7 @@ export class SideOrderComponent implements OnInit {
   }
   pending(){
     this.status = 'pending';
-    console.log(this.status);
+
   }
   rejected(){
     this.status ='rejected';
@@ -101,12 +104,13 @@ export class SideOrderComponent implements OnInit {
         console.log(req);
         this.deleteLoading = false;
         this.getPending();
-        this.rejectOrders();
+
         Swal.fire('Deleted successfully ', 'Updated picture', 'success');
+        this.getReject();
+      
       },
-      error:(err)=>{console.log(err)}
-    }
+      error:(err)=>{console.log(err)}}
       );
-     
   }
 }
+

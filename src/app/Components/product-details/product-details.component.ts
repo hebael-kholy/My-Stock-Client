@@ -1,4 +1,7 @@
+
 import { ChangeDetectorRef, Component, OnInit, Output } from '@angular/core';
+
+
 import { ActivatedRoute } from '@angular/router';
 import {
   faCartShopping,
@@ -9,8 +12,6 @@ import { ProductsService } from 'src/app/Services/products/products.service';
 import { WishlistService } from 'src/app/Services/wishlist/wishlist.service';
 
 
-
-
 export class Review {
   title!:string;
   rating!:number;
@@ -18,6 +19,7 @@ export class Review {
   productid!:number;
 
 }
+
 export class CartItem {
   product!: number;
   color!: string;
@@ -27,7 +29,7 @@ export class WihlistItem {
 }
 
 @Component({
-  
+
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css'],
@@ -60,6 +62,7 @@ export class ProductDetailsComponent implements OnInit {
 
 
 
+
   constructor(
     public route: ActivatedRoute,
     public myService: ProductsService,
@@ -67,11 +70,13 @@ export class ProductDetailsComponent implements OnInit {
     private changeDetector: ChangeDetectorRef
   ) {
     console.log(route);
+
     this.ID = route.snapshot.params['id'];
     console.log(this.ID);
   }
 
   ngOnInit(): void {
+
     this.isloading = true;
     this.myService.getProductDetails(this.ID).subscribe({
       next: (res) => {
@@ -89,12 +94,14 @@ export class ProductDetailsComponent implements OnInit {
           this.comments=this.commentss.data;
 
         })
+
       },
       error(err) {
         console.log(err);
       },
     });
   }
+
   
   ngAfterViewChecked(): void {
     this.image = localStorage.getItem('image');
@@ -174,6 +181,7 @@ export class ProductDetailsComponent implements OnInit {
       this.comments.splice(this.comments.indexOf(review), 1);
   })
 }
+
 
 
 }

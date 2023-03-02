@@ -27,7 +27,6 @@ export class SalesProductsComponent {
     this.isLoading = true;
     this.myService.getSalesProducts().subscribe((data: any) => {
       console.log(data);
-      
       this.isLoading = false;
 
       this.products = data.data;
@@ -41,6 +40,7 @@ export class SalesProductsComponent {
     });
   }
   
+
   customOptions: OwlOptions = {
     loop: true,
     dots: true,

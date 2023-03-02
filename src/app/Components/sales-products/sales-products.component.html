@@ -28,9 +28,10 @@
                 <fa-icon [icon]="icon" class="text-primary"></fa-icon>
                 <fa-icon [icon]="icon" class="text-primary"></fa-icon>
 
+
               </div>
               <p class="text-capitalize my-1">{{product.title}}</p>
-              <span class="fw-bold">$ {{product.price}}</span>
+              <span class="fw-bold">{{product.price}} EGP</span>
               <div class="btn-addcart">
                 <a routerLink="/products/{{product._id}}"  class="btn text-uppercase mt-3">Details</a>
               </div>
