@@ -182,7 +182,7 @@ export class CartComponent implements OnInit {
       Swal.fire('You got the Discount', '', 'success');
       this.getCartTotal();
         },
-        error:(err)=>{Swal.fire('Please Enter an invalid Coupon', '', 'error');}
+        error:(err)=>{Swal.fire('Please Enter a valid Coupon', '', 'error');}
 
     })
   }
