@@ -10,7 +10,12 @@
 /*Header*/
 
 #header {
-  background: url(/assets/handmade.jpg) top/cover no-repeat;
+  background: url(../../../assets/handmade.jpg);
+  background-size: 100% 100%;
+  /* height:75vh; */
+  background-repeat: no-repeat;
+  /* width:100%; */
+
 }
 .shopBtn {
   background-color: white;
@@ -37,7 +42,10 @@
 
 /* Offers in Blog Section */
 #offers {
-  background: url(/assets/blog.jpg) center/cover no-repeat;
+  background: url(../../../assets/blog.jpg);
+  background-size: 100% 100%;
+  /* height:75vh; */
+  background-repeat: no-repeat;
 }
 #offers .row {
   min-height: 60vh;

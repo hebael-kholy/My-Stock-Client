@@ -31,3 +31,8 @@
 .user-image {
   border-radius: 50%;
 }
+img{
+  margin-left:20px;
+}
+.navbar{
+--bs-navbar-padding-y: 0.0 rem;}

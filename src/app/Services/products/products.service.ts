@@ -38,4 +38,16 @@ export class ProductsService {
     return this.myClient.post(`https://ecommerceiti-heba.onrender.com/wishlist/${id}`,data);
 
 }
+
+  addReview(data:any){
+    return this.myClient.post(`https://ecommerceiti-heba.onrender.com/review`,data)
+
+  }
+
+  getReview(id:any){
+    return this.myClient.get(`https://ecommerceiti-heba.onrender.com/product/review/${id}?limit=100`)
+  }
+  deleteReview(id:any){
+    return this.myClient.delete(`https://ecommerceiti-heba.onrender.com/review/${id}`)
+  }
 }

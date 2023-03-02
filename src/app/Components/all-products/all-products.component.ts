@@ -23,7 +23,7 @@ export class AllProductsComponent implements OnInit {
 
  
 
-  constructor(public myService: ProductsService, public route: ActivatedRoute) {}
+  constructor(public myService: ProductsService) {}
 
   ngOnInit(): void {
     this.getProducts();

@@ -1,11 +1,11 @@
-@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 
 .profile{
     display: flex;
 }
 .sideNavbar{
     width: 22%;
-    height: 100vh;
+    height: 130vh;
 }
 .userImg img{
     width: 120px;
@@ -46,43 +46,6 @@ li:hover{
 }
 
 /* end nav */
-/* cardsOrders */
-.card-img-top{
-    width: 170px;
-    height: 200px;
-}
-.cardOrders{
-    padding: 30px 30px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 35px;
-}
-.card{
-    box-shadow: 0px 0px 4px #c4c4c4;
-}
-h5{
-    font-size: 18px;
-    font-weight: 600;
-}
-.btnDel{
-    display: flex;
-    justify-content: flex-end;
-}
-.btnDel input{
-    background-color: white;
-  color: rgb(175, 16, 16);
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 8px;
-}
-.btnDel input:hover{
-    background-color: rgb(175, 16, 16);
-    color: white;
-    cursor: pointer;
-}
-.card-body{
-    padding: 10px;
-}
 
 /* responsive design */
 
@@ -98,10 +61,10 @@ h5{
       .sideNavbar{
         width: 42%;
       }
-      .cardOrders{
+      /* .cardOrders{
         gap: 20px;
       }
-      .card{height: fit-content;}
+      .card{height: fit-content;} */
 }
 
 @media (max-width: 580px){
@@ -116,15 +79,176 @@ h5{
         font-size: 19px;
         padding-left: 35px;
       }
-      .cardOrders{
-        gap: 5px;
-        justify-content: center;
+}
+
+.conter{
+    width: 78%;
+}
+.orderNav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 50px 60px;
+    flex-wrap: wrap;
+    height: 150px;
+    align-items: center;
+}
+.title{
+    color:#c057f7;
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+select{
+    background-color: white;
+width: 170px;
+text-align: center;
+border-radius: 5px;
+border-color: #c057f7;
+font-weight: 600;
+padding: 3px 0;
+font-size: 16px;
+letter-spacing: 1px;
+}
+input[type="search"]{
+    border-color: #c057f7;
+    padding: 0 10px;
+    border-radius: 4px;
+}
+.tableRow{
+    display: flex;
+    width: 100%;
+}
+.tableRow>div{
+    margin-left: 10px;
+    width: 33%;
+    padding: 0 10px;
+    font-weight: 600;
+}
+.tableRow div:not(:first-child){
+    text-align: center;
+}
+.tableRow div:first-child{
+    padding-left: 50px;
+}
+i.accepted{
+    color: #05d505;
+    font-size: 20px;
+}
+i.rejected{
+    color: #9c0303;
+    font-size: 20px;
+}
+i.pending{
+    font-size: 20px;
+}
+i.trash{
+    color: #9c0303;
+    font-size: 20px;
+    cursor: pointer; 
+}
+
+.total{
+    display: flex;
+    width: 40%;
+}
+.total>div{
+    width: 30%;
+    text-align: center;
+    font-weight: 600;
+}
+.oneRow{
+    display: flex;
+    align-items: center;
+}
+.rowOne{
+    width: 60%;
+}
+.navOrder{
+    width: 100%;
+    display: flex;
+    padding: 5px 0px;
+}
+.item>div{
+    width: 33%;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 18px;
+}
+.item{
+    display:flex;
+    width: 60%;
+    gap: 16px;
+}
+.items{
+    display:flex;
+    width: 40%;
+}
+.items>div{
+    width: 30%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+div.trash{
+    width: fit-content;
+}
+.emptyOrders{
+    width: fit-content;
+    margin: 50px auto;
+}
+.emptyOrders img{
+    width: 300px;
+}
+.emptyOrders div{
+    text-align: center;
+font-weight: 700;
+font-size: 25px;
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+pagination-controls{
+    position: absolute;
+    right: 7%;
+    margin-top: 10px;
+  }
+  pagination-controls /deep/ .ngx-pagination .current{
+    background: #c057f7;
+  }
+@media (max-width: 580px){
+    .title{
+        font-size: 18px;
     }
-    .card{
-        margin-bottom: 5px;
+    .tableRow div:first-child{
+        padding-left: 0px;
     }
-    .card-img-top{
-        width: 190px;
-        height: 200px;
+    .total>div{
+        width: -1%;
+    }
+    .conter{
+        width: 100%;
+    }
+    .tableRow>div{
+        width: 25%;
+    }
+    i.accepted{
+        display: none;
+    }
+    .item>div{
+        font-size: 15px;
+    }
+    .items>div{
+        font-size:15px;
+        width: 50%;
+    }
+    .orderNav{
+        padding: 30px 35px;
+    }
+    input[type="search"]{
+        margin-bottom: 10px;
+    }
+    .items div:last-child{
+        display: none;
     }
 }
