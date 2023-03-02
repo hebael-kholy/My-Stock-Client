@@ -147,8 +147,8 @@ export class CartComponent implements OnInit {
     console.log(`this is userid ${this.userId}`);
 
     let order: Order = {
-      shippingPrice: 10,
-      taxPrice: 10,
+      shippingPrice: 0,
+      taxPrice: 14,
     };
     console.log(typeof order);
     console.log(order);
