@@ -1,17 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/Services/cart/cart.service';
+import { WishlistService } from 'src/app/Services/wishlist/wishlist.service';
+import { WishlistComponent } from '../wishlist/wishlist.component';
+import { ProductsService } from 'src/app/Services/products/products.service';
+
+
 import Swal from 'sweetalert2';
 import {
   CartItem,
   ProductDetailsComponent,
 } from '../product-details/product-details.component';
 
+
+
+
+export class Coupon{
+  coupon!: string;
+}
+
 export class Order {
   shippingPrice!: number;
   taxPrice!: number;
 }
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -21,21 +32,25 @@ export class CartComponent implements OnInit {
   items: any[] = [];
   product: any;
   productId: number = 0;
-  totalPrice: number = 0;
+  totalPrice: any;
+
   itemId: any;
   productTitle: any;
   data2: any;
   value: any;
   cartId: any;
   cartitems: any;
-  isloading = false;
 
+  isloading = true;
+  coupon_value = "";
+  Discountt:number =0;
+  totalAfterDiscount:number = 0;
+  newdisc:any;
   user = localStorage.getItem('user');
   userId = this.user && JSON.parse(this.user)._id;
 
-  constructor(public route: ActivatedRoute, public myService: CartService) {}
+  constructor(public route: ActivatedRoute, public myService: CartService ,public wishlistService : WishlistService) {}
   ngOnInit(): void {
-    this.isloading = true;
     this.myService.getCartitems(this.userId).subscribe({
       next: (res: any) => {
         console.log(res);
@@ -46,15 +61,16 @@ export class CartComponent implements OnInit {
         this.cartId = res.data._id;
         console.log(`this is cart id ${this.cartId}`);
         this.totalPrice = res.data.totalCarPrice;
+
+        this.totalAfterDiscount = this.totalPrice;
+        this.newdisc = 0;
         console.log(this.totalPrice);
+
       },
+    
       error: (err: any) => {
         console.log(err.error.message);
-        // Swal.fire({
-        //   icon: 'error',
-        //   title: 'Something Went Wrong',
-        //   text: err.error.message,
-        // });
+
       },
     });
   }
@@ -63,6 +79,21 @@ export class CartComponent implements OnInit {
     this.myService.getCartitems(this.userId).subscribe((res: any) => {
       console.log(res);
       this.totalPrice = res.data.totalCarPrice;
+      //console.log(this.coupon_value);
+ if(this.coupon_value === ""
+ ){
+  this.totalAfterDiscount = this.totalPrice;
+
+  console.log("hala");
+ }
+     else{ this.totalAfterDiscount = res.data.totalAfterDiscount;
+      this.newdisc = localStorage.getItem('disc');
+    console.log("not")}
+      this.Discountt = res.discount;
+      
+      console.log(this.totalAfterDiscount);
+      console.log(this.Discountt);
+
     });
   }
 
@@ -105,7 +136,10 @@ export class CartComponent implements OnInit {
       .UpdateQuantity(this.userId, this.itemId, updateditem)
       .subscribe((res) => {
         console.log(res);
+
         this.getCartTotal();
+        
+
       });
   }
 
@@ -130,4 +164,31 @@ export class CartComponent implements OnInit {
     localStorage.setItem('cartitems', this.cartitems);
     Swal.fire('Your order has been Checkout', '', 'success');
   }
+
+  apply(){
+
+    let coupon :Coupon = {
+      coupon:this.coupon_value,
+    }
+    console.log(this.coupon_value)
+    this.myService.applycoupon(this.userId,coupon).subscribe(
+        { next:(res:any)=>{
+      console.log(res);
+      this.Discountt = res.discount;
+      localStorage.setItem('disc', this.Discountt.toString())
+      console.log(this.Discountt);
+      this.totalAfterDiscount = res.data.totalAfterDiscount;
+      console.log(this.Discountt);
+      Swal.fire('You got the Discount', '', 'success');
+      this.getCartTotal();
+        },
+        error:(err)=>{Swal.fire('Please Enter an invalid Coupon', '', 'error');}
+
+    })
+  }
+
+
+
+  
+
 }

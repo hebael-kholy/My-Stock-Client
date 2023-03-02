@@ -1,38 +1,42 @@
-<ng-container>
+
+<ng-container> 
     <section>
     <div class="container mt-3">
         <div class="card-table">
-            <div class="cart-product">
-                <table class="table table-responsive">
+            <div class="cart-product table-responsive">
+                <table class="table">
                     <thead>
                         <tr>
-                            <th>Pr.No</th>
-                            <th>Product Image</th>
-                            <th>Product Name</th>
+                            <th scope = "col">Pr.No</th>
+                            <th scope = "col">Product Image</th>
+                            <th scope = "col">Product Name</th>
                             
-                            <th>Description</th>
-                            <th>Price</th>
+                            <th scope = "col">Description</th>
+                            <th scope = "col">Price</th>
 
-                            <th>Action</th>
+                            <th scope = "col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of items; let i = index">
-                            <td>{{i+1}}</td>
+                        <tr   *ngFor="let item of items; let i = index">
+                            <td scope = "row">{{i+1}}</td>
+
+
                             
                             <td><img style="width: 200px ;height:200px; " src="{{item.image}} " alt=""></td>
                             <td style="vertical-align: middle;">{{item.title}}</td>
                             <td style="width: 25%;">{{item.description}}</td>
-                            <th style="width: 12%;">{{item.price}}</th>
+
+                            <th style="width: 12%;">{{item.price}} EGP</th>
+
                             <td>
                                 <i  (click)="removeItem(item)" class="bi bi-trash"></i>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="5"></td>
-                            <td><button routerLink="/products" class="btn-shop btn">Shop More</button></td>
-                           
-                            
+                            <td><button routerLink="/products" class="btn-shop btn">Shop More</button></td>                           
+
                         </tr>
                     </tbody>
                 </table>

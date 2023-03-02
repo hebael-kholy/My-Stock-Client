@@ -37,17 +37,9 @@ export class SalesProductsComponent {
           return a;
         }
       })
-    
-
     });
   }
   
-
-
-
-
-  
-
 
   customOptions: OwlOptions = {
     loop: true,

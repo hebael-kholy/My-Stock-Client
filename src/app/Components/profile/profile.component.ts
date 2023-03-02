@@ -20,9 +20,14 @@ export class ProfileComponent implements OnInit {
   isEditName = false;
   isEditMail = false;
   isEditGender = false;
+
+  isEditPassword = false;
   File: any;
   imgText = 'Select Image';
   isLoading = false;
+  password: any;
+  hide = true;
+
 
   form = new FormGroup({
     username: new FormControl('', [
@@ -30,6 +35,10 @@ export class ProfileComponent implements OnInit {
       Validators.minLength(3),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
+
+
+    password: new FormControl('', [Validators.minLength(3)]),
+
   });
 
   @Output() formEvent = new EventEmitter();
@@ -77,14 +86,25 @@ export class ProfileComponent implements OnInit {
     this.isEditName = true;
     this.isEditMail = false;
     this.isEditGender = false;
+    this.isEditPassword = false;
   }
   EditMail(item: any) {
     this.isEditMail = true;
     this.isEditName = false;
     this.isEditGender = false;
+
+    this.isEditPassword = false;
+
   }
   EditGender() {
     this.isEditGender = true;
+    this.isEditMail = false;
+    this.isEditName = false;
+    this.isEditPassword = false;
+  }
+  EditPassword() {
+    this.isEditPassword = true;
+    this.isEditGender = false;
     this.isEditMail = false;
     this.isEditName = false;
   }
@@ -134,21 +154,55 @@ export class ProfileComponent implements OnInit {
   //  this.myService.updateUserImage(this.idUser,user).subscribe();
 
   // update user
-  Update(name: any, email: any, gender: any) {
-    let user = { name, email, gender };
 
-    console.log(user);
+  Update(name: any, email: any, password: any, gender: any) {
+    let user: any;
+    if (password) {
+      user = { name: name, email: email, password: password, gender: gender };
+      console.log(user);
+    } else {
+      user = { name: name, email: email, gender: gender };
+      console.log(user);
+    }
+    console.log('hi iam user');
     if (this.form.status === 'VALID') {
       this.formEvent.emit(this.form.value);
     } else {
       this.nameError = 'name is required';
       this.mailError = ' pattern must be email@example.com';
     }
-    this.myService.updateUser(this.idUser, user).subscribe(() => {
-      localStorage.setItem('name', user.name);
-      localStorage.setItem('mail', user.email);
-      localStorage.setItem('gender', user.gender);
+
+    this.myService.updateUser(this.idUser, user).subscribe({
+      next: (res: any) => {
+        localStorage.setItem('name', user.name);
+        localStorage.setItem('mail', user.email);
+        localStorage.setItem('gender', user.gender);
+        Swal.fire('Done', 'Updated Successfully', 'success');
+      },
+      error: (err) => {
+        console.log(err);
+        var nameErr = `Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "${
+          this.form.get('email')?.value
+        }" }`;
+        if (err.error.message == nameErr) {
+          this.isLoading = false;
+          Swal.fire({
+            icon: 'warning',
+            title: 'Email Already Exists!!!',
+            showConfirmButton: true,
+          });
+          this.form.patchValue({
+            email: localStorage.getItem('mail'),
+          });
+        } else {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Something Went Wrong!!!',
+            showConfirmButton: true,
+          });
+        }
+      },
     });
-    Swal.fire('Done', 'Updated Successfully', 'success');
+
   }
 }

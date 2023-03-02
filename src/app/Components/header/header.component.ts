@@ -25,8 +25,6 @@ export class HeaderComponent implements OnInit {
   totalitems2: number = 0;
   cartitems: any;
   wishlistitems: any;
-
-  loginStatus = this.authService.checkLoginStatus();
   username: any;
   image: any;
 

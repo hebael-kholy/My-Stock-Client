@@ -1,222 +1,31 @@
-/* html{
-  font-size: 16px;
-} */
-/* body{
-  background-color: #969292;
-  margin-left: 10px;
-  margin-right: 10px;
-} */
-.container-fluid{
-    display: flex;
-    /* flex: 3 0; */
-    padding-left: 10px;
-    padding-right: 10px;
-    gap: 20px;
-  }
-  .container{
-    display: flex;
-    /* flex-wrap: wrap; */
-    /* align-items: flex-start; */
-    justify-content: space-between;
-    align-items: space-between;
-    /* margin: 1.5rem; */
-    margin-top: 0.5rem;
-    /* flex:3 0; */
-    /* width: 70%; */
-    border: 1px solid black;
-    background-color: white;
-    padding: 20px;
-  }
-  .contentI{
-    display: flex;
-    /* align-items: space-between; */
-    justify-content: start;
-    gap: 15px;
-  }
-  .content{
-    /* width: 30%; */
-  }
-  img{
-    height: 150px;
-  }
-  .price{
-    display: flex;
-    flex-direction: column;
-    /* align-items: space-between; */
-    justify-content: space-between;
-  }
-  .con-txt{
-    display: flex;
-    justify-content: space-between;
-    align-items: space-between;
-  }
-  .rightCon{
-    margin-top: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid black;
-    width: 30%;
-    padding: 30px;
-    height: 200px;
-  }
-  .name{
-    color: gray;
-  }
-  .txt{
-    margin-top: -13px;
-    margin-bottom: 47px;
-    width: 90%;
-  }
-  .remove-button{
-    border-radius: 1rem;
-    border: none;
-    padding: 0.5rem;
-    color: #c057f7;;
-    opacity: 0.7;
-    outline: none;
-  }
-  
-  .remove-button:hover{
-    opacity: 1;
-    cursor: pointer;
-  }
-  .checkout{
-    padding: 0.6rem;
-    color: white;
-    background:#c057f7;
-    display: block;
-    width: 99%;
-    border-radius: 2px;
-    text-align: center;
-    opacity: 0.7;
-    justify-self: center;
-    text-decoration: none;
-  }
-  .full{
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-  }
-  .checkout:hover{
-    opacity: 1;
-    cursor: pointer;
-  }
-  .priceLeft{
-    font-size: 22px;
-  }
-  .total{
-    font-size: 22px;
-  }
-  .conShop{
-    margin-top: 1rem;
-    padding: 0.6rem;
-    color: white;
-    background:#c057f7;
-    width: 180px;
-    border-radius: 2px;
-    text-align: center;
-    justify-self: center;
-    text-decoration: none;
-  }
-  .btnClear{
-    display: flex;
-    gap: 10px;
-  }
-  .clear{
-    margin-top: 1rem;
-    padding: 0.6rem;
-    color: white;
-    background:#c057f7;
-    display: inline;
-    width: 180px;
-    border-radius: 2px;
-    text-align: center;
-    justify-self: center;
-    text-decoration: none;
-    border: none;
 
-  }
-  @media (max-width:1060px) {
-    .container-fluid{
-      display: flex;
-      flex-direction: column;
-    }
-    .rightCon, .container{
-      max-width: 100% !important;
-      width: 100%;
-    }
-    .container{
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .full{
-      width: 100%;
-    }
-    .price{
-      margin-top: 2%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-end;
-      width: 100%;
-      gap: 40px;
-      font-size: 18px;
-      height: 50px;
-    }
-    .priceLeft{
-      margin-top: 18px;
-    }
-  
-  }
-  
-  @media (max-width:400px){
-    .contentI{
-      display: flex;
-      flex-direction: column;
-    }
-    img{
-      height: 200px;
-    }
-  }
-  .card {
-    height: 60vh;
-    margin: 25px;
-    padding: 25px;
+.icon-hover-primary:hover {
+  border-color: #3b71ca !important;
+  background-color: white !important;
 }
 
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+.icon-hover-primary:hover i {
+  color: #3b71ca !important;
+}
+.icon-hover-danger:hover {
+  border-color: #dc4c64 !important;
+  background-color: white !important;
 }
 
- .center .btn {
-  font-size: 14px !important;
-  margin-top: 20px !important;
-  font-weight: 400;
-  padding: 12px 72px;
-  border-radius: 3px !important;
-} 
-.cont{
-  margin-top: 20px;
+.icon-hover-danger:hover i {
+  color: #dc4c64 !important;
 }
 
-.center img {
-  
-  text-decoration: none;
-  color: inherit;
-  border: none;
-  outline: none;
-  height: 270px;
-  width: 400px;
-  margin: 20px 0px;
+h6{
+  margin-top: 6px;
 }
-
-.btn-shopp{
-  background-color: #c057f7;
-  color:white;
+.w-100 {
+  width: 100%!important;
+  background-color: #c057f7 !important;
+  border: #c057f7;
+  color: white;
+}
+section{
+  background-color: floralwhite;
 }
 

@@ -36,22 +36,38 @@ export class LoginService {
     localStorage.removeItem('gender');
     localStorage.removeItem('image');
     localStorage.removeItem('user');
-    location.reload();
-    this.router.navigate(['']);
+
+    localStorage.removeItem('email');
+    localStorage.removeItem('cartitems');
+    localStorage.removeItem('wishlistitems');
+    this.router.navigate(['login']);
+    // location.reload();
+
   }
 
   checkLoginStatus() {
     return localStorage.getItem('token');
   }
 
- resetPassword(data: any){
-  return this.httpClient.post("https://ecommerceiti-heba.onrender.com/forgetpass",data);
- }
 
- veryfyCode(data: any){
-  return this.httpClient.post("https://ecommerceiti-heba.onrender.com/forgetpass/verify",data);
- }
- changePassword(data: any){
-  return this.httpClient.put("https://ecommerceiti-heba.onrender.com/forgetpass",data);
- }
+  resetPassword(data: any) {
+    return this.httpClient.post(
+      'https://ecommerceiti-heba.onrender.com/forgetpass',
+      data
+    );
+  }
+
+  veryfyCode(data: any) {
+    return this.httpClient.post(
+      'https://ecommerceiti-heba.onrender.com/forgetpass/verify',
+      data
+    );
+  }
+  changePassword(data: any) {
+    return this.httpClient.put(
+      'https://ecommerceiti-heba.onrender.com/forgetpass',
+      data
+    );
+  }
+
 }

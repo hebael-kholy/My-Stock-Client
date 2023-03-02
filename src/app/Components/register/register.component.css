@@ -1,4 +1,5 @@
-i{
+
+i {
   position: absolute;
   right: 11px;
   top: 35px;
@@ -6,43 +7,48 @@ i{
   cursor: pointer;
   color: #9d28dc;
 }
-.icon{
+
+.icon {
   position: absolute;
   left: 10px;
 }
-img{
-  width: 70% !important;
-}
-.gr{
+/* img {
+  width: 70%;
+} */
+.gr {
   display: inline-block !important;
 }
-label{
+label {
   color: #9d28dc;
 }
-input:focus{
+input:focus {
   border-color: #9d28dc;
   box-shadow: none;
 }
-button{
+button {
+
   background-color: #c057f7;
   outline: none;
   border: none;
   color: white;
 }
-button:hover{
+
+button:hover {
   background-color: #c166f1;
   color: white;
 }
-.log{
+.log {
   color: #b744f6;
 }
-button:disabled{
+button:disabled {
+
   background-color: #c057f7;
   outline: none;
   border: none;
   color: white;
 }
-.overlay{
+
+.overlay {
   position: fixed;
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
@@ -50,13 +56,14 @@ button:disabled{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
   z-index: 2;
 }
-.overlay img{
+.overlay img {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 

@@ -10,7 +10,9 @@
 /*Header*/
 
 #header {
+
   background: url(/assets/handmade.jpg) top/cover no-repeat;
+
 }
 .shopBtn {
   background-color: white;
@@ -37,7 +39,10 @@
 
 /* Offers in Blog Section */
 #offers {
+
+
   background: url(/assets/blog.jpg) center/cover no-repeat;
+
 }
 #offers .row {
   min-height: 60vh;

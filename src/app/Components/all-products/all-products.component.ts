@@ -23,7 +23,9 @@ export class AllProductsComponent implements OnInit {
 
  
 
+
   constructor(public myService: ProductsService, public route: ActivatedRoute) {}
+
 
   ngOnInit(): void {
     this.getProducts();

@@ -28,6 +28,10 @@ export class CartService {
   createOrder(id1:any,id2:any,data:Order){
     return this.myClient.post(`https://ecommerceiti-heba.onrender.com/order/${id1}/${id2}`,data);
   }
+  applycoupon(id:any , data:any){
+    return this.myClient.put(`https://ecommerceiti-heba.onrender.com/users/${id}/cart/applycoupon`,data)
+  }
+
   }
 
 
